@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Adarsh Tours & Travels — Premium car rental and cab service in Mumbai. Airport transfers, outstation trips, wedding car hire with AC vehicles and experienced drivers.">
+    <title>Adarsh Tours & Travels — Your Journey, Our Priority</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web@2.0.3"></script>
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+    <link rel="apple-touch-icon" href="assets/favicon.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- ═══ ANNOUNCEMENT BAR ═══ -->
+    <div class="announce-bar">
+        <div class="container announce-inner">
+            <div class="announce-left">
+                <a href="tel:+919987618778"><i class="ph ph-phone"></i> +91 9987618778</a>
+                <span class="announce-dot"></span>
+                <a href="mailto:vinoddubey965@gmail.com"><i class="ph ph-envelope-simple"></i> vinoddubey965@gmail.com</a>
+                <span class="announce-dot"></span>
+                <span><i class="ph ph-clock"></i> 24/7 Service</span>
+            </div>
+            <div class="announce-right">
+                <a href="#" aria-label="Facebook"><i class="ph-fill ph-facebook-logo"></i></a>
+                <a href="#" aria-label="Instagram"><i class="ph-fill ph-instagram-logo"></i></a>
+                <a href="https://wa.me/919987618778" aria-label="WhatsApp"><i class="ph-fill ph-whatsapp-logo"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══ NAVIGATION ═══ -->
+    <header class="header" id="header">
+        <div class="container header-inner">
+            <a href="#" class="brand">
+                <img src="assets/logo.png" alt="Adarsh Tours & Travels" class="brand-logo">
+            </a>
+            <nav class="nav" id="mainNav">
+                <a href="#home" class="nav-item active">Home</a>
+                <a href="#services" class="nav-item">Services</a>
+                <a href="#fleet" class="nav-item">Our Fleet</a>
+                <a href="#about" class="nav-item">About</a>
+                <a href="#contact" class="nav-item">Contact</a>
+            </nav>
+            <div class="header-actions">
+                <a href="tel:+919987618778" class="header-phone"><i class="ph-fill ph-phone"></i><span>Call Now</span></a>
+                <a href="#booking" class="btn-cta">Book a Ride</a>
+            </div>
+            <button class="menu-toggle" id="menuToggle" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- ═══ HERO / DASHBOARD ═══ -->
+    <section class="hero-poster-section" id="home">
+        <div class="container">
+            <div class="hero-poster-card">
+                <img src="assets/hero-poster.jpg" alt="Adarsh Tours & Travels" class="hero-poster-img">
+            </div>
+            
+            <div class="booking-card" id="booking">
+                <div class="booking-header">
+                    <div class="booking-header-title">
+                        <h3><i class="ph ph-navigation-arrow"></i> Quick Booking</h3>
+                        <p>Fill in your trip details — we'll confirm within 15 minutes</p>
+                    </div>
+                    <div class="booking-badge">
+                        <i class="ph-fill ph-circle"></i> Instant Confirmation
+                    </div>
+                </div>
+                <form class="booking-grid" id="bookingForm">
+                    <div class="field">
+                        <label>Trip Type</label>
+                        <select id="tripType"><option>One Way</option><option>Round Trip</option><option>Local (8hrs/80km)</option><option>Airport Transfer</option></select>
+                    </div>
+                    <div class="field">
+                        <label>Pickup Location</label>
+                        <input type="text" id="pickupLoc" placeholder="Enter city or address">
+                    </div>
+                    <div class="field">
+                        <label>Drop Location</label>
+                        <input type="text" id="dropLoc" placeholder="Enter city or address">
+                    </div>
+                    <div class="field">
+                        <label>Pickup Date</label>
+                        <input type="date" id="pickupDate">
+                    </div>
+                    <div class="field">
+                        <label>Car Preference</label>
+                        <select id="carPref"><option>Any Car</option><option>Small (4-5 Seater)</option><option>Big (6-7 Seater)</option><option>Sedan</option><option>SUV / MUV</option></select>
+                    </div>
+                    <button type="submit" class="btn-cta btn-submit"><i class="ph-fill ph-whatsapp-logo"></i> Get Quote on WhatsApp</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ SERVICES ═══ -->
+    <section class="section services" id="services">
+        <div class="container">
+            <div class="sec-head">
+                <span class="sec-tag">What We Offer</span>
+                <h2>Complete <em>travel solutions</em><br>for every journey</h2>
+                <p>From quick airport pickups to multi-day outstation trips — we handle every ride with care and professionalism.</p>
+            </div>
+            <div class="services-grid">
+                <div class="svc-card">
+                    <div class="svc-icon"><i class="ph ph-airplane-takeoff"></i></div>
+                    <h3>Airport Pickup & Drop</h3>
+                    <p>Punctual airport transfers with flight tracking. No waiting charges, meet & greet service available.</p>
+                </div>
+                <div class="svc-card">
+                    <div class="svc-icon"><i class="ph ph-building-apartment"></i></div>
+                    <h3>Hotel Pickup & Drop</h3>
+                    <p>Seamless hotel transfers across Mumbai. Comfortable rides for business travelers and tourists.</p>
+                </div>
+                <div class="svc-card">
+                    <div class="svc-icon"><i class="ph ph-timer"></i></div>
+                    <h3>Full Day Tour</h3>
+                    <p>8 hrs / 80 km packages for local sightseeing, business meetings, and city exploration.</p>
+                </div>
+                <div class="svc-card">
+                    <div class="svc-icon"><i class="ph ph-binoculars"></i></div>
+                    <h3>Sightseeing Tours</h3>
+                    <p>Curated tours to Lonavala, Mahabaleshwar, Alibaug, Shirdi and other popular destinations.</p>
+                </div>
+                <div class="svc-card">
+                    <div class="svc-icon"><i class="ph ph-map-pin-line"></i></div>
+                    <h3>Outstation Cabs</h3>
+                    <p>One-way and round-trip cabs to any city. Comfortable long-distance travel with experienced drivers.</p>
+                </div>
+                <div class="svc-card">
+                    <div class="svc-icon"><i class="ph ph-heart"></i></div>
+                    <h3>Wedding Car Hire</h3>
+                    <p>Premium decorated vehicles for weddings, sangeet, and receptions with professional chauffeurs.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ FLEET ═══ -->
+    <section class="section fleet-section" id="fleet">
+        <div class="container">
+            <div class="sec-head">
+                <span class="sec-tag">Our Fleet</span>
+                <h2>Choose your <em>perfect ride</em></h2>
+                <p>Well-maintained AC vehicles for every trip size and budget.</p>
+            </div>
+            <div class="fleet-tabs" id="fleetTabs">
+                <button class="tab active" data-filter="all">All Cars</button>
+                <button class="tab" data-filter="sedan">Sedan</button>
+                <button class="tab" data-filter="muv">MUV / MPV</button>
+                <button class="tab" data-filter="suv">SUV</button>
+            </div>
+            <div class="fleet-grid" id="fleetGrid"></div>
+        </div>
+    </section>
+
+    <!-- ═══ WHY US ═══ -->
+    <section class="section why-section" id="about">
+        <div class="container">
+            <div class="sec-head">
+                <span class="sec-tag">Why Choose Us</span>
+                <h2>We make every <em>ride count</em></h2>
+            </div>
+            <div class="why-grid">
+                <div class="why-card">
+                    <div class="why-num">01</div>
+                    <h3>Experienced Drivers</h3>
+                    <p>All drivers are police-verified, professionally trained, and know every route across Maharashtra.</p>
+                </div>
+                <div class="why-card">
+                    <div class="why-num">02</div>
+                    <h3>24/7 Availability</h3>
+                    <p>Round-the-clock service. Early morning flights, late night drops — we're always ready.</p>
+                </div>
+                <div class="why-card">
+                    <div class="why-num">03</div>
+                    <h3>Transparent Pricing</h3>
+                    <p>No hidden charges. Toll, parking, and fuel included in packages. Pay only what you see.</p>
+                </div>
+                <div class="why-card">
+                    <div class="why-num">04</div>
+                    <h3>Clean AC Vehicles</h3>
+                    <p>Every car is regularly serviced, sanitized, and equipped with working AC for your comfort.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ TESTIMONIALS ═══ -->
+    <section class="section testi-section">
+        <div class="container">
+            <div class="sec-head">
+                <span class="sec-tag">Testimonials</span>
+                <h2>What our <em>clients say</em></h2>
+            </div>
+            <div class="testi-grid">
+                <div class="testi-card">
+                    <div class="testi-stars"><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i></div>
+                    <p>"Excellent service from Adarsh Tours! Booked a cab to Shirdi and the driver was punctual, polite, and the car was spotless. Highly recommended!"</p>
+                    <div class="testi-author"><div class="testi-avatar">RS</div><div><strong>Rajesh Sharma</strong><small>Mumbai to Shirdi Trip</small></div></div>
+                </div>
+                <div class="testi-card">
+                    <div class="testi-stars"><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i></div>
+                    <p>"Used their airport transfer service multiple times. Always on time, clean Innova Crysta, and very reasonable rates. Best in Mumbai!"</p>
+                    <div class="testi-author"><div class="testi-avatar">PM</div><div><strong>Priya Mehta</strong><small>Airport Transfer</small></div></div>
+                </div>
+                <div class="testi-card">
+                    <div class="testi-stars"><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star-half"></i></div>
+                    <p>"Booked a decorated Crysta for my daughter's wedding. Beautiful decoration, professional driver, made our special day even more memorable!"</p>
+                    <div class="testi-author"><div class="testi-avatar">AK</div><div><strong>Amit Kulkarni</strong><small>Wedding Car Hire</small></div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ CTA ═══ -->
+    <section class="cta-band">
+        <div class="container cta-inner">
+            <div>
+                <h2>Ready for a <em>safe ride?</em></h2>
+                <p>Book your next trip with Adarsh Tours & Travels. Reliable, safe, on-time — every single time.</p>
+            </div>
+            <div class="cta-btns">
+                <a href="#booking" class="btn-cta btn-lg">Book Now <i class="ph ph-arrow-right"></i></a>
+                <a href="tel:+919987618778" class="btn-ghost btn-lg"><i class="ph ph-phone"></i> Call Us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ FOOTER ═══ -->
+    <footer class="footer" id="contact">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="#" class="brand">
+                        <img src="assets/logo.png" alt="Adarsh Tours & Travels" class="brand-logo footer-brand-logo">
+                    </a>
+                    <p>Your trusted partner for premium car rental services in Mumbai and across Maharashtra. Safe rides, memorable journeys.</p>
+                    <div class="footer-socials">
+                        <a href="#"><i class="ph-fill ph-facebook-logo"></i></a>
+                        <a href="#"><i class="ph-fill ph-instagram-logo"></i></a>
+                        <a href="https://wa.me/919987618778"><i class="ph-fill ph-whatsapp-logo"></i></a>
+                        <a href="#"><i class="ph-fill ph-youtube-logo"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <a href="#home">Home</a><a href="#services">Services</a><a href="#fleet">Our Fleet</a><a href="#about">About Us</a><a href="#booking">Book a Ride</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Our Services</h4>
+                    <a href="#">Airport Transfers</a><a href="#">Outstation Cabs</a><a href="#">Local Day Tour</a><a href="#">Sightseeing Tours</a><a href="#">Wedding Car Hire</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact Us</h4>
+                    <div class="fci"><i class="ph ph-map-pin"></i><span>Near Diplomat Hotel, Merry Weather Road, Colaba, Mumbai - 400039</span></div>
+                    <div class="fci"><i class="ph ph-phone"></i><a href="tel:+919987618778">+91 9987618778</a></div>
+                    <div class="fci"><i class="ph ph-phone"></i><a href="tel:+919323875065">+91 9323875065</a></div>
+                    <div class="fci"><i class="ph ph-envelope-simple"></i><a href="mailto:vinoddubey965@gmail.com">vinoddubey965@gmail.com</a></div>
+                    <div class="fci"><i class="ph ph-clock"></i><span>24/7 Available</span></div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Adarsh Tours & Travels. All rights reserved.</p>
+                <div class="fb-links"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a></div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Actions -->
+    <a href="https://wa.me/919987618778" class="fab fab-wa" target="_blank" aria-label="WhatsApp"><i class="ph-fill ph-whatsapp-logo"></i></a>
+    <a href="tel:+919987618778" class="fab fab-phone" aria-label="Call"><i class="ph-fill ph-phone"></i></a>
+
+    <script src="script.js"></script>
+</body>
+</html>

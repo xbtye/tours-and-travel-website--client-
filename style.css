@@ -1417,8 +1417,20 @@ select {
   }
 
   .footer-grid {
-    grid-template-columns: 1fr;
-    gap: 28px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  .footer-brand,
+  .footer-col:last-child {
+    grid-column: 1 / -1;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+    padding: 16px 0;
   }
 
   .fab-wa {

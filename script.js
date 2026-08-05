@@ -125,7 +125,7 @@ fleetTabs.addEventListener("click", e => {
 // ═══════ BOOK CAR (WhatsApp) ═══════
 function bookCar(carName) {
   const msg = encodeURIComponent(`Hi, I'd like to book: ${carName}\nPlease share availability and pricing.`);
-  window.open(`https://wa.me/919987618778?text=${msg}`, "_blank");
+  window.open(`https://wa.me/918767629236?text=${msg}`, "_blank");
 }
 
 // ═══════ COUNTER ANIMATION ═══════
@@ -179,13 +179,13 @@ if (bookingForm) {
     const date = document.getElementById("pickupDate").value;
     const car = document.getElementById("carPref").value;
     const msg = `Hi Adarsh Tours!\n\nTrip: ${trip}\nPickup: ${pickup || "Not specified"}\nDrop: ${drop || "Not specified"}\nDate: ${date}\nCar: ${car}\n\nPlease confirm availability and fare.`;
-    window.open(`https://wa.me/919987618778?text=${encodeURIComponent(msg)}`, "_blank");
+    window.open(`https://wa.me/918767629236?text=${encodeURIComponent(msg)}`, "_blank");
   });
 }
 
 // ═══════ SMOOTH SCROLL ═══════
 document.querySelectorAll('a[href^="#"]').forEach(a => {
-  a.addEventListener("click", function(e) {
+  a.addEventListener("click", function (e) {
     const t = document.querySelector(this.getAttribute("href"));
     if (t) { e.preventDefault(); t.scrollIntoView({ behavior: "smooth", block: "start" }); }
   });

@@ -150,16 +150,57 @@ const metricObs = new IntersectionObserver(entries => {
 const metrics = document.querySelector(".hero-metrics");
 if (metrics) metricObs.observe(metrics);
 
-// ═══════ SCROLL REVEAL ═══════
+// ═══════ SCROLL REVEAL (FRAMER MOTION STAGGERED SPRING) ═══════
 function initReveal() {
   document.querySelectorAll(".svc-card, .fleet-card, .why-card, .testi-card, .sec-head").forEach((el, i) => {
     el.classList.add("reveal");
-    el.style.transitionDelay = `${(i % 4) * 0.08}s`;
+    el.style.transitionDelay = `${(i % 4) * 0.09}s`;
   });
   const obs = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add("visible"); obs.unobserve(e.target); } });
+    entries.forEach(e => { 
+      if (e.isIntersecting) { 
+        e.target.classList.add("visible"); 
+        obs.unobserve(e.target); 
+      } 
+    });
   }, { threshold: 0.1, rootMargin: "0px 0px -30px 0px" });
   document.querySelectorAll(".reveal").forEach(el => obs.observe(el));
+  
+  // Re-bind Framer Motion mouse effects
+  initFramerEffects();
+}
+
+// ═══════ FRAMER MOTION 3D TILT EFFECT & MAGNETIC BUTTONS ═══════
+function initFramerEffects() {
+  // Magnetic Buttons Effect
+  document.querySelectorAll('.btn-cta:not(.btn-submit), .btn-ghost, .fab').forEach(btn => {
+    btn.addEventListener('mousemove', e => {
+      const rect = btn.getBoundingClientRect();
+      const x = e.clientX - rect.left - rect.width / 2;
+      const y = e.clientY - rect.top - rect.height / 2;
+      btn.style.transform = `translate3d(${x * 0.15}px, ${y * 0.15}px, 0) scale(1.03)`;
+    });
+    btn.addEventListener('mouseleave', () => {
+      btn.style.transform = '';
+    });
+  });
+
+  // 3D Card Tilt Effect (Removed .booking-card to keep form stable)
+  document.querySelectorAll('.svc-card, .fleet-card, .why-card, .testi-card, .hero-poster-card').forEach(card => {
+    card.addEventListener('mousemove', e => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+      const rotateX = ((y - centerY) / centerY) * -4;
+      const rotateY = ((x - centerX) / centerX) * 4;
+      card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px)`;
+    });
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = '';
+    });
+  });
 }
 initReveal();
 

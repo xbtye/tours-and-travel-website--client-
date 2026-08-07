@@ -20,21 +20,32 @@
 
 <body>
 
-    <!-- ═══ ANNOUNCEMENT BAR ═══ -->
+    <!-- ═══ ANNOUNCEMENT BAR (SLIDING RIGHT TO LEFT) ═══ -->
     <div class="announce-bar">
-        <div class="container announce-inner">
-            <div class="announce-left">
+        <div class="announce-ticker-track">
+            <div class="announce-ticker-content">
                 <a href="tel:+919987618778"><i class="ph ph-phone"></i> +91 9987618778</a>
-                <span class="announce-dot"></span>
-                <a href="mailto:vinoddubey965@gmail.com"><i class="ph ph-envelope-simple"></i>
-                    vinoddubey965@gmail.com</a>
-                <span class="announce-dot"></span>
+                <span class="announce-dot">•</span>
+                <a href="mailto:vinoddubey965@gmail.com"><i class="ph ph-envelope-simple"></i> vinoddubey965@gmail.com</a>
+                <span class="announce-dot">•</span>
                 <span><i class="ph ph-clock"></i> 24/7 Service</span>
+                <span class="announce-dot">•</span>
+                <span><i class="ph ph-shield-check"></i> Clean AC Cabs & Verified Drivers</span>
+                <span class="announce-dot">•</span>
+                <a href="https://wa.me/918767629236" target="_blank"><i class="ph-fill ph-whatsapp-logo"></i> Instant WhatsApp Booking</a>
+                <span class="announce-dot">•</span>
             </div>
-            <div class="announce-right">
-                <a href="#" aria-label="Facebook"><i class="ph-fill ph-facebook-logo"></i></a>
-                <a href="#" aria-label="Instagram"><i class="ph-fill ph-instagram-logo"></i></a>
-                <a href="https://wa.me/918767629236" aria-label="WhatsApp"><i class="ph-fill ph-whatsapp-logo"></i></a>
+            <div class="announce-ticker-content" aria-hidden="true">
+                <a href="tel:+919987618778"><i class="ph ph-phone"></i> +91 9987618778</a>
+                <span class="announce-dot">•</span>
+                <a href="mailto:vinoddubey965@gmail.com"><i class="ph ph-envelope-simple"></i> vinoddubey965@gmail.com</a>
+                <span class="announce-dot">•</span>
+                <span><i class="ph ph-clock"></i> 24/7 Service</span>
+                <span class="announce-dot">•</span>
+                <span><i class="ph ph-shield-check"></i> Clean AC Cabs & Verified Drivers</span>
+                <span class="announce-dot">•</span>
+                <a href="https://wa.me/918767629236" target="_blank"><i class="ph-fill ph-whatsapp-logo"></i> Instant WhatsApp Booking</a>
+                <span class="announce-dot">•</span>
             </div>
         </div>
     </div>
@@ -128,40 +139,73 @@
                 <p>From quick airport pickups to multi-day outstation trips — we handle every ride with care and
                     professionalism.</p>
             </div>
-            <div class="services-grid">
-                <div class="svc-card">
-                    <div class="svc-icon"><i class="ph ph-airplane-takeoff"></i></div>
-                    <h3>Airport Pickup & Drop</h3>
-                    <p>Punctual airport transfers with flight tracking. No waiting charges, meet & greet service
-                        available.</p>
-                </div>
-                <div class="svc-card">
-                    <div class="svc-icon"><i class="ph ph-building-apartment"></i></div>
-                    <h3>Hotel Pickup & Drop</h3>
-                    <p>Seamless hotel transfers across Mumbai. Comfortable rides for business travelers and tourists.
-                    </p>
-                </div>
-                <div class="svc-card">
-                    <div class="svc-icon"><i class="ph ph-timer"></i></div>
-                    <h3>Full Day Tour</h3>
-                    <p>8 hrs / 80 km packages for local sightseeing, business meetings, and city exploration.</p>
-                </div>
-                <div class="svc-card">
-                    <div class="svc-icon"><i class="ph ph-binoculars"></i></div>
-                    <h3>Sightseeing Tours</h3>
-                    <p>Curated tours to Lonavala, Mahabaleshwar, Alibaug, Shirdi and other popular destinations.</p>
-                </div>
-                <div class="svc-card">
-                    <div class="svc-icon"><i class="ph ph-map-pin-line"></i></div>
-                    <h3>Outstation Cabs</h3>
-                    <p>One-way and round-trip cabs to any city. Comfortable long-distance travel with experienced
-                        drivers.</p>
-                </div>
-                <div class="svc-card">
-                    <div class="svc-icon"><i class="ph ph-heart"></i></div>
-                    <h3>Wedding Car Hire</h3>
-                    <p>Premium decorated vehicles for weddings, sangeet, and receptions with professional chauffeurs.
-                    </p>
+            <div class="services-marquee">
+                <div class="services-track">
+                    <!-- Original Cards -->
+                    <div class="svc-card">
+                        <div class="svc-icon"><i class="ph ph-airplane-takeoff"></i></div>
+                        <h3>Airport Pickup & Drop</h3>
+                        <p>Punctual airport transfers with flight tracking. No waiting charges, meet & greet service
+                            available.</p>
+                    </div>
+                    <div class="svc-card">
+                        <div class="svc-icon"><i class="ph ph-building-apartment"></i></div>
+                        <h3>Hotel Pickup & Drop</h3>
+                        <p>Seamless hotel transfers across Mumbai. Comfortable rides for business travelers and tourists.</p>
+                    </div>
+                    <div class="svc-card">
+                        <div class="svc-icon"><i class="ph ph-timer"></i></div>
+                        <h3>Full Day Tour</h3>
+                        <p>8 hrs / 80 km packages for local sightseeing, business meetings, and city exploration.</p>
+                    </div>
+                    <div class="svc-card">
+                        <div class="svc-icon"><i class="ph ph-binoculars"></i></div>
+                        <h3>Sightseeing Tours</h3>
+                        <p>Curated tours to Lonavala, Mahabaleshwar, Alibaug, Shirdi and other popular destinations.</p>
+                    </div>
+                    <div class="svc-card">
+                        <div class="svc-icon"><i class="ph ph-map-pin-line"></i></div>
+                        <h3>Outstation Cabs</h3>
+                        <p>One-way and round-trip cabs to any city. Comfortable long-distance travel with experienced drivers.</p>
+                    </div>
+                    <div class="svc-card">
+                        <div class="svc-icon"><i class="ph ph-heart"></i></div>
+                        <h3>Wedding Car Hire</h3>
+                        <p>Premium decorated vehicles for weddings, sangeet, and receptions with professional chauffeurs.</p>
+                    </div>
+
+                    <!-- Duplicated Cards for Seamless Loop -->
+                    <div class="svc-card" aria-hidden="true">
+                        <div class="svc-icon"><i class="ph ph-airplane-takeoff"></i></div>
+                        <h3>Airport Pickup & Drop</h3>
+                        <p>Punctual airport transfers with flight tracking. No waiting charges, meet & greet service
+                            available.</p>
+                    </div>
+                    <div class="svc-card" aria-hidden="true">
+                        <div class="svc-icon"><i class="ph ph-building-apartment"></i></div>
+                        <h3>Hotel Pickup & Drop</h3>
+                        <p>Seamless hotel transfers across Mumbai. Comfortable rides for business travelers and tourists.</p>
+                    </div>
+                    <div class="svc-card" aria-hidden="true">
+                        <div class="svc-icon"><i class="ph ph-timer"></i></div>
+                        <h3>Full Day Tour</h3>
+                        <p>8 hrs / 80 km packages for local sightseeing, business meetings, and city exploration.</p>
+                    </div>
+                    <div class="svc-card" aria-hidden="true">
+                        <div class="svc-icon"><i class="ph ph-binoculars"></i></div>
+                        <h3>Sightseeing Tours</h3>
+                        <p>Curated tours to Lonavala, Mahabaleshwar, Alibaug, Shirdi and other popular destinations.</p>
+                    </div>
+                    <div class="svc-card" aria-hidden="true">
+                        <div class="svc-icon"><i class="ph ph-map-pin-line"></i></div>
+                        <h3>Outstation Cabs</h3>
+                        <p>One-way and round-trip cabs to any city. Comfortable long-distance travel with experienced drivers.</p>
+                    </div>
+                    <div class="svc-card" aria-hidden="true">
+                        <div class="svc-icon"><i class="ph ph-heart"></i></div>
+                        <h3>Wedding Car Hire</h3>
+                        <p>Premium decorated vehicles for weddings, sangeet, and receptions with professional chauffeurs.</p>
+                    </div>
                 </div>
             </div>
         </div>

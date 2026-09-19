@@ -1,48 +1,56 @@
 // ═══════ FLEET DATA ═══════
 const fleet = [
   {
-    name: "Maruti Suzuki Swift Dzire",
-    type: "Sedan · Compact · AC",
+    name: "Maruti Suzuki Dzire (2026)",
+    type: "Sedan · Modern Comfort · AC",
     cat: "sedan",
     seats: 4, ac: "AC", bags: 2,
-    price: "₹12", unit: "/km",
-    badge: "POPULAR", badgeCls: "b-popular",
-    img: "assets/swift-dzire.png"
+    price: "₹2,500", unit: " onwards",
+    badge: "NEW 2026", badgeCls: "b-popular",
+    img: "assets/swift-dzire-2026.jpg"
   },
   {
     name: "Toyota Innova Crysta",
-    type: "MUV · Premium · Spacious",
+    type: "MUV · Executive Class · Spacious",
     cat: "muv",
     seats: 7, ac: "Dual AC", bags: 5,
-    price: "₹20", unit: "/km",
+    price: "₹3,500", unit: " onwards",
     badge: "PREMIUM", badgeCls: "b-premium",
     img: "assets/innova-crysta.png"
   },
   {
+    name: "Toyota Innova Hycross",
+    type: "Hybrid MUV / SUV · Ultra Luxury",
+    cat: ["muv", "suv"],
+    seats: 7, ac: "Dual AC", bags: 5,
+    price: "₹3,500", unit: " onwards",
+    badge: "HYBRID", badgeCls: "b-hybrid",
+    img: "assets/innova-hycross.jpg"
+  },
+  {
     name: "Kia Carens",
-    type: "MPV · Premium 3-row",
-    cat: "muv",
+    type: "MPV / SUV · Premium 3-row",
+    cat: ["muv", "suv"],
     seats: 6, ac: "Dual AC", bags: 4,
-    price: "₹18", unit: "/km",
-    badge: "NEW", badgeCls: "b-new",
+    price: "₹3,000", unit: " onwards",
+    badge: "LUXURY", badgeCls: "b-new",
     img: "assets/kia-carens.png"
   },
   {
     name: "Maruti Suzuki Ertiga",
-    type: "MPV · CNG · Economical",
+    type: "MPV · Economical · Spacious",
     cat: "muv",
     seats: 7, ac: "AC", bags: 3,
-    price: "₹15", unit: "/km",
+    price: "₹3,000", unit: " onwards",
     badge: "BUDGET", badgeCls: "b-budget",
     img: "assets/ertiga.png"
   },
-
   {
     name: "Hyundai Aura",
-    type: "Sedan · Comfortable ride",
+    type: "Sedan · Smooth City Ride · AC",
     cat: "sedan",
     seats: 4, ac: "AC", bags: 2,
-    price: "₹12", unit: "/km",
+    price: "₹2,500", unit: " onwards",
     badge: "SEDAN", badgeCls: "b-sedan",
     img: "assets/hyundai-aura.png"
   }
@@ -85,31 +93,40 @@ window.addEventListener("scroll", () => {
 
 // ═══════ RENDER FLEET ═══════
 function renderFleet(filter = "all") {
-  const cars = filter === "all" ? fleet : fleet.filter(c => c.cat === filter);
+  const cars = filter === "all" 
+    ? fleet 
+    : fleet.filter(c => Array.isArray(c.cat) ? c.cat.includes(filter) : c.cat === filter);
   fleetGrid.innerHTML = cars.map(c => {
     let specs = `<span class="fleet-spec"><i class="ph ph-users"></i> ${c.seats} Seats</span>`;
     specs += `<span class="fleet-spec"><i class="ph ph-snowflake"></i> ${c.ac}</span>`;
     if (!c.noBags && c.bags > 0) specs += `<span class="fleet-spec"><i class="ph ph-suitcase-simple"></i> ${c.bags} Bags</span>`;
     if (c.noBags) specs += `<span class="fleet-spec"><i class="ph ph-flower-tulip"></i> Decorated</span>`;
     return `
-      <div class="fleet-card reveal">
+      <div class="fleet-card visible">
         <div class="fleet-thumb">
           <span class="fleet-badge ${c.badgeCls}">${c.badge}</span>
-          <img src="${c.img}" alt="${c.name}" loading="lazy">
+          <img src="${c.img}" alt="${c.name}">
         </div>
         <div class="fleet-body">
           <h3>${c.name}</h3>
           <p class="fleet-type">${c.type}</p>
           <div class="fleet-specs">${specs}</div>
+          <div class="fleet-pkg-info">
+            <span><i class="ph ph-clock"></i> 8 Hours / 80 Kms</span>
+            <span class="pkg-incl"><i class="ph-fill ph-check-circle"></i> Toll & Parking Inc.</span>
+          </div>
           <div class="fleet-foot">
-            <span class="fleet-price">${c.price}<small>${c.unit}</small></span>
+            <div class="fleet-price-col">
+              <span class="fleet-price">${c.price}<small>${c.unit}</small></span>
+              <span class="fleet-pkg-sub">1 Day (8h / 80km)</span>
+            </div>
             <button class="btn-book" onclick="bookCar('${c.name}')">Book Now</button>
           </div>
         </div>
       </div>`;
   }).join("");
-  // Re-trigger reveal for new cards
-  initReveal();
+  // Re-bind Framer Motion mouse effects
+  initFramerEffects();
 }
 renderFleet();
 
@@ -124,7 +141,13 @@ fleetTabs.addEventListener("click", e => {
 
 // ═══════ BOOK CAR (WhatsApp) ═══════
 function bookCar(carName) {
-  const msg = encodeURIComponent(`Hi, I'd like to book: ${carName}\nPlease share availability and pricing.`);
+  const msg = encodeURIComponent(`Hi Adarsh Tours, I'd like to book: ${carName}\nPackage: One Day (8 Hours / 80 Kms - Toll & Parking Included)\nPlease confirm availability.`);
+  window.open(`https://wa.me/918767629236?text=${msg}`, "_blank");
+}
+
+// ═══════ BOOK SERVICE (WhatsApp) ═══════
+function bookService(serviceName) {
+  const msg = encodeURIComponent(`Hi Adarsh Tours, I'd like to book / inquire about: ${serviceName}.\nPlease share pricing and availability.`);
   window.open(`https://wa.me/918767629236?text=${msg}`, "_blank");
 }
 
@@ -152,7 +175,7 @@ if (metrics) metricObs.observe(metrics);
 
 // ═══════ SCROLL REVEAL (FRAMER MOTION STAGGERED SPRING) ═══════
 function initReveal() {
-  document.querySelectorAll(".svc-card, .fleet-card, .why-card, .testi-card, .sec-head").forEach((el, i) => {
+  document.querySelectorAll(".why-card, .testi-card, .sec-head").forEach((el, i) => {
     el.classList.add("reveal");
     el.style.transitionDelay = `${(i % 4) * 0.09}s`;
   });
@@ -185,8 +208,8 @@ function initFramerEffects() {
     });
   });
 
-  // 3D Card Tilt Effect (Removed .booking-card to keep form stable)
-  document.querySelectorAll('.svc-card, .fleet-card, .why-card, .testi-card, .hero-poster-card').forEach(card => {
+  // 3D Card Tilt Effect (Removed .booking-card and .hero-poster-card to keep them stable and fixed)
+  document.querySelectorAll('.svc-card, .fleet-card, .why-card, .testi-card').forEach(card => {
     card.addEventListener('mousemove', e => {
       const rect = card.getBoundingClientRect();
       const x = e.clientX - rect.left;

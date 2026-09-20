@@ -111,10 +111,6 @@ function renderFleet(filter = "all") {
           <h3>${c.name}</h3>
           <p class="fleet-type">${c.type}</p>
           <div class="fleet-specs">${specs}</div>
-          <div class="fleet-pkg-info">
-            <span><i class="ph ph-clock"></i> 8 Hours / 80 Kms</span>
-            <span class="pkg-incl"><i class="ph-fill ph-check-circle"></i> Toll & Parking Inc.</span>
-          </div>
           <div class="fleet-foot">
             <div class="fleet-price-col">
               <span class="fleet-price">${c.price}<small>${c.unit}</small></span>
@@ -175,7 +171,7 @@ if (metrics) metricObs.observe(metrics);
 
 // ═══════ SCROLL REVEAL (FRAMER MOTION STAGGERED SPRING) ═══════
 function initReveal() {
-  document.querySelectorAll(".why-card, .testi-card, .sec-head").forEach((el, i) => {
+  document.querySelectorAll(".testi-card, .sec-head").forEach((el, i) => {
     el.classList.add("reveal");
     el.style.transitionDelay = `${(i % 4) * 0.09}s`;
   });
@@ -186,8 +182,13 @@ function initReveal() {
         obs.unobserve(e.target); 
       } 
     });
-  }, { threshold: 0.1, rootMargin: "0px 0px -30px 0px" });
+  }, { threshold: 0.05, rootMargin: "150px 0px 150px 0px" });
   document.querySelectorAll(".reveal").forEach(el => obs.observe(el));
+  
+  // Immediately show all elements if in full-page screenshot mode
+  if (window.innerHeight > 2500) {
+    document.querySelectorAll(".reveal").forEach(el => el.classList.add("visible"));
+  }
   
   // Re-bind Framer Motion mouse effects
   initFramerEffects();
@@ -209,7 +210,7 @@ function initFramerEffects() {
   });
 
   // 3D Card Tilt Effect (Removed .booking-card and .hero-poster-card to keep them stable and fixed)
-  document.querySelectorAll('.svc-card, .fleet-card, .why-card, .testi-card').forEach(card => {
+  document.querySelectorAll('.svc-card, .fleet-card, .why-card, .benefit-card, .testi-card').forEach(card => {
     card.addEventListener('mousemove', e => {
       const rect = card.getBoundingClientRect();
       const x = e.clientX - rect.left;
@@ -254,3 +255,166 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
     if (t) { e.preventDefault(); t.scrollIntoView({ behavior: "smooth", block: "start" }); }
   });
 });
+
+// ═══════ INTERACTIVE DRAGGABLE & SWIPEABLE ANNOUNCEMENT TICKER ═══════
+function initAnnounceTicker() {
+  const bar = document.querySelector(".announce-bar");
+  const track = document.querySelector(".announce-ticker-track");
+  if (!bar || !track) return;
+
+  // Disable CSS static animation so JS controls movement
+  track.style.animation = "none";
+
+  // Ensure at least 4 identical blocks for seamless infinite 360 wrap
+  while (track.children.length < 4) {
+    const clone = track.children[0].cloneNode(true);
+    clone.setAttribute("aria-hidden", "true");
+    track.appendChild(clone);
+  }
+
+  let singleWidth = track.children[0].offsetWidth;
+  window.addEventListener("resize", () => {
+    if (track.children[0]) {
+      singleWidth = track.children[0].offsetWidth;
+    }
+  });
+
+  // Start in middle block
+  let currentX = -singleWidth;
+  let isDragging = false;
+  let hasDragged = false;
+  let startX = 0;
+  let dragStartX = 0;
+  let lastX = 0;
+  let lastTime = 0;
+  let velocity = 0;
+  let currentVelocity = -45; // Default auto-scroll speed (px/s)
+  const defaultSpeed = -45;
+  let isHovered = false;
+
+  // Prevent native browser link drag
+  bar.addEventListener("dragstart", e => e.preventDefault());
+
+  // Mouse hover pause (Desktop)
+  bar.addEventListener("mouseenter", () => {
+    isHovered = true;
+  });
+  bar.addEventListener("mouseleave", () => {
+    isHovered = false;
+  });
+
+  // Pointer Down (Windows Mouse Click or Mobile Finger Touch)
+  bar.addEventListener("pointerdown", e => {
+    isDragging = true;
+    hasDragged = false;
+    startX = e.clientX;
+    dragStartX = currentX;
+    lastX = e.clientX;
+    lastTime = performance.now();
+    velocity = 0;
+    bar.classList.add("grabbing");
+    try {
+      bar.setPointerCapture(e.pointerId);
+    } catch (err) {}
+  });
+
+  // Pointer Move (Mouse Drag or Finger Slide)
+  bar.addEventListener("pointermove", e => {
+    if (!isDragging) return;
+
+    const diff = e.clientX - startX;
+    if (Math.abs(diff) > 4) {
+      hasDragged = true;
+    }
+
+    currentX = dragStartX + diff;
+
+    // Track velocity for flick momentum
+    const now = performance.now();
+    const dt = (now - lastTime) / 1000;
+    if (dt > 0.008) {
+      velocity = (e.clientX - lastX) / dt;
+      lastX = e.clientX;
+      lastTime = now;
+    }
+
+    // Seamless infinite wrap in both directions
+    while (singleWidth > 0 && currentX > -singleWidth) currentX -= singleWidth;
+    while (singleWidth > 0 && currentX < -2 * singleWidth) currentX += singleWidth;
+
+    track.style.transform = `translate3d(${currentX}px, 0, 0)`;
+  });
+
+  // Pointer Up / Cancel (Release Mouse or Lift Finger)
+  const onPointerEnd = e => {
+    if (!isDragging) return;
+    isDragging = false;
+    bar.classList.remove("grabbing");
+
+    if (bar.hasPointerCapture && bar.hasPointerCapture(e.pointerId)) {
+      try {
+        bar.releasePointerCapture(e.pointerId);
+      } catch (err) {}
+    }
+
+    // Clamp flick velocity
+    currentVelocity = Math.max(-900, Math.min(900, velocity));
+
+    setTimeout(() => {
+      hasDragged = false;
+    }, 80);
+  };
+
+  bar.addEventListener("pointerup", onPointerEnd);
+  bar.addEventListener("pointercancel", onPointerEnd);
+
+  // Prevent link navigation if user was dragging/sliding
+  track.addEventListener(
+    "click",
+    e => {
+      if (hasDragged) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+    },
+    true
+  );
+
+  // Animation Loop: Auto-scroll & smooth inertia
+  let lastFrameTime = performance.now();
+  function tick(now) {
+    const dt = Math.min((now - lastFrameTime) / 1000, 0.1);
+    lastFrameTime = now;
+
+    if (!isDragging) {
+      const targetSpeed = isHovered ? 0 : defaultSpeed;
+
+      // Smooth deceleration / transition to targetSpeed
+      if (Math.abs(currentVelocity - targetSpeed) > 1) {
+        currentVelocity += (targetSpeed - currentVelocity) * Math.min(dt * 3.5, 0.18);
+      } else {
+        currentVelocity = targetSpeed;
+      }
+
+      currentX += currentVelocity * dt;
+
+      // Infinite wrap seamlessly in both directions
+      while (singleWidth > 0 && currentX > -singleWidth) currentX -= singleWidth;
+      while (singleWidth > 0 && currentX < -2 * singleWidth) currentX += singleWidth;
+
+      track.style.transform = `translate3d(${currentX}px, 0, 0)`;
+    }
+
+    requestAnimationFrame(tick);
+  }
+
+  requestAnimationFrame(tick);
+}
+
+// Start ticker
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", initAnnounceTicker);
+} else {
+  initAnnounceTicker();
+}
+

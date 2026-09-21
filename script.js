@@ -1,262 +1,327 @@
-// ═══════ FLEET DATA ═══════
-const fleet = [
+// ═══════════════════════════════════════════════════════════
+// ADARSH TOURS & TRAVELS — DRIVEX ENGINE & FLEET SYSTEM
+// ═══════════════════════════════════════════════════════════
+
+// ─── FLEET DATA ───
+const fleetData = [
   {
+    id: "dzire",
     name: "Maruti Suzuki Dzire (2026)",
-    type: "Sedan · Modern Comfort · AC",
-    cat: "sedan",
-    seats: 4, ac: "AC", bags: 2,
-    price: "₹2,500", unit: " onwards",
-    badge: "NEW 2026", badgeCls: "b-popular",
-    img: "assets/swift-dzire-2026.jpg"
+    category: "sedan",
+    tag: "Economy Sedan",
+    seats: 4,
+    ac: "Chilled AC",
+    bags: 2,
+    price: "₹2,500",
+    unit: "/day",
+    img: "assets/swift-dzire.png",
+    pkg: "8h / 80km (Toll & Parking Inc.)"
   },
   {
+    id: "crysta",
     name: "Toyota Innova Crysta",
-    type: "MUV · Executive Class · Spacious",
-    cat: "muv",
-    seats: 7, ac: "Dual AC", bags: 5,
-    price: "₹3,500", unit: " onwards",
-    badge: "PREMIUM", badgeCls: "b-premium",
-    img: "assets/innova-crysta.png"
+    category: "muv",
+    tag: "Executive MUV",
+    seats: 7,
+    ac: "Dual AC",
+    bags: 5,
+    price: "₹3,500",
+    unit: "/day",
+    img: "assets/innova-crysta.png",
+    pkg: "8h / 80km (Toll & Parking Inc.)"
   },
   {
+    id: "hycross",
     name: "Toyota Innova Hycross",
-    type: "Hybrid MUV / SUV · Ultra Luxury",
-    cat: ["muv", "suv"],
-    seats: 7, ac: "Dual AC", bags: 5,
-    price: "₹3,500", unit: " onwards",
-    badge: "HYBRID", badgeCls: "b-hybrid",
-    img: "assets/innova-hycross.jpg"
+    category: "suv",
+    tag: "Hybrid Luxury",
+    seats: 7,
+    ac: "Dual AC",
+    bags: 5,
+    price: "₹3,500",
+    unit: "/day",
+    img: "assets/innova-hycross.jpg",
+    pkg: "8h / 80km (Toll & Parking Inc.)"
   },
   {
+    id: "carens",
     name: "Kia Carens",
-    type: "MPV / SUV · Premium 3-row",
-    cat: ["muv", "suv"],
-    seats: 6, ac: "Dual AC", bags: 4,
-    price: "₹3,000", unit: " onwards",
-    badge: "LUXURY", badgeCls: "b-new",
-    img: "assets/kia-carens.png"
+    category: "muv",
+    tag: "Premium MPV",
+    seats: 6,
+    ac: "Dual AC",
+    bags: 4,
+    price: "₹3,000",
+    unit: "/day",
+    img: "assets/kia-carens.png",
+    pkg: "8h / 80km (Toll & Parking Inc.)"
   },
   {
+    id: "ertiga",
     name: "Maruti Suzuki Ertiga",
-    type: "MPV · Economical · Spacious",
-    cat: "muv",
-    seats: 7, ac: "AC", bags: 3,
-    price: "₹3,000", unit: " onwards",
-    badge: "BUDGET", badgeCls: "b-budget",
-    img: "assets/ertiga.png"
+    category: "muv",
+    tag: "Family MUV",
+    seats: 7,
+    ac: "Front & Rear AC",
+    bags: 3,
+    price: "₹3,000",
+    unit: "/day",
+    img: "assets/ertiga.png",
+    pkg: "8h / 80km (Toll & Parking Inc.)"
   },
   {
+    id: "aura",
     name: "Hyundai Aura",
-    type: "Sedan · Smooth City Ride · AC",
-    cat: "sedan",
-    seats: 4, ac: "AC", bags: 2,
-    price: "₹2,500", unit: " onwards",
-    badge: "SEDAN", badgeCls: "b-sedan",
-    img: "assets/hyundai-aura.png"
+    category: "sedan",
+    tag: "City Sedan",
+    seats: 4,
+    ac: "Chilled AC",
+    bags: 2,
+    price: "₹2,500",
+    unit: "/day",
+    img: "assets/hyundai-aura.png",
+    pkg: "8h / 80km (Toll & Parking Inc.)"
   }
 ];
 
-// ═══════ DOM ═══════
+// Wishlist state
+const wishlist = new Set();
+
+// ─── DOM REFERENCES ───
 const header = document.getElementById("header");
 const menuToggle = document.getElementById("menuToggle");
 const mainNav = document.getElementById("mainNav");
 const fleetGrid = document.getElementById("fleetGrid");
-const fleetTabs = document.getElementById("fleetTabs");
-const bookingForm = document.getElementById("bookingForm");
+const fleetFilterTabs = document.getElementById("fleetFilterTabs");
+const searchTabs = document.getElementById("searchTabs");
+const searchFrom = document.getElementById("searchFrom");
+const pickupLocationInput = document.getElementById("pickupLocationInput");
+const pickupDateInput = document.getElementById("pickupDateInput");
+const dropDateInput = document.getElementById("dropDateInput");
+const viewAllCars = document.getElementById("viewAllCars");
 
-// ═══════ STICKY HEADER ═══════
-window.addEventListener("scroll", () => {
-  header.classList.toggle("scrolled", window.scrollY > 20);
-});
 
-// ═══════ MOBILE MENU ═══════
-menuToggle.addEventListener("click", () => {
-  menuToggle.classList.toggle("active");
-  mainNav.classList.toggle("open");
-});
-mainNav.querySelectorAll(".nav-item").forEach(link => {
-  link.addEventListener("click", () => {
-    menuToggle.classList.remove("active");
-    mainNav.classList.remove("open");
-  });
-});
+let currentTripType = "Local";
 
-// ═══════ ACTIVE NAV ON SCROLL ═══════
-const sections = document.querySelectorAll("section[id]");
-window.addEventListener("scroll", () => {
-  const y = window.scrollY + 100;
-  sections.forEach(s => {
-    const link = document.querySelector(`.nav-item[href="#${s.id}"]`);
-    if (link) link.classList.toggle("active", y >= s.offsetTop && y < s.offsetTop + s.offsetHeight);
-  });
-});
+// ─── INITIALIZE DATES ───
+function initDates() {
+  const today = new Date();
+  const tomorrow = new Date(today);
+  tomorrow.setDate(tomorrow.getDate() + 1);
 
-// ═══════ RENDER FLEET ═══════
+  const formatDate = d => d.toISOString().split("T")[0];
+
+  if (pickupDateInput) {
+    pickupDateInput.value = formatDate(today);
+    pickupDateInput.min = formatDate(today);
+  }
+  if (dropDateInput) {
+    dropDateInput.value = formatDate(tomorrow);
+    dropDateInput.min = formatDate(today);
+  }
+}
+
+// ─── RENDER VEHICLES GRID ───
 function renderFleet(filter = "all") {
-  const cars = filter === "all" 
-    ? fleet 
-    : fleet.filter(c => Array.isArray(c.cat) ? c.cat.includes(filter) : c.cat === filter);
-  fleetGrid.innerHTML = cars.map(c => {
-    let specs = `<span class="fleet-spec"><i class="ph ph-users"></i> ${c.seats} Seats</span>`;
-    specs += `<span class="fleet-spec"><i class="ph ph-snowflake"></i> ${c.ac}</span>`;
-    if (!c.noBags && c.bags > 0) specs += `<span class="fleet-spec"><i class="ph ph-suitcase-simple"></i> ${c.bags} Bags</span>`;
-    if (c.noBags) specs += `<span class="fleet-spec"><i class="ph ph-flower-tulip"></i> Decorated</span>`;
+  if (!fleetGrid) return;
+
+  const cars = filter === "all"
+    ? fleetData
+    : fleetData.filter(car => car.category === filter || (filter === "suv" && car.category === "suv"));
+
+  fleetGrid.innerHTML = cars.map(car => {
+    const isWished = wishlist.has(car.id);
     return `
-      <div class="fleet-card visible">
-        <div class="fleet-thumb">
-          <span class="fleet-badge ${c.badgeCls}">${c.badge}</span>
-          <img src="${c.img}" alt="${c.name}">
+      <article class="vehicle-card" data-id="${car.id}">
+        <!-- Top Wishlist Heart -->
+        <div class="card-top-action">
+          <button class="btn-wishlist ${isWished ? 'active' : ''}" 
+                  onclick="toggleWishlist('${car.id}', this)" 
+                  aria-label="Save to Wishlist">
+            <i class="${isWished ? 'ph-fill ph-heart' : 'ph ph-heart'}"></i>
+          </button>
         </div>
-        <div class="fleet-body">
-          <h3>${c.name}</h3>
-          <p class="fleet-type">${c.type}</p>
-          <div class="fleet-specs">${specs}</div>
-          <div class="fleet-foot">
-            <div class="fleet-price-col">
-              <span class="fleet-price">${c.price}<small>${c.unit}</small></span>
-              <span class="fleet-pkg-sub">1 Day (8h / 80km)</span>
+
+        <!-- Car Image -->
+        <div class="card-car-thumb">
+          <img src="${car.img}" alt="${car.name}" class="card-car-img" loading="lazy">
+        </div>
+
+        <!-- Car Body -->
+        <div class="card-car-body">
+          <span class="card-car-category">${car.tag}</span>
+          <h3 class="card-car-title">${car.name}</h3>
+
+          <!-- Specs Row -->
+          <div class="card-specs-row">
+            <span class="spec-item"><i class="ph-bold ph-users"></i> ${car.seats} Seats</span>
+            <span class="spec-item"><i class="ph-bold ph-snowflake"></i> ${car.ac}</span>
+            <span class="spec-item"><i class="ph-bold ph-suitcase-simple"></i> ${car.bags} Bags</span>
+          </div>
+
+          <!-- Bottom Footer -->
+          <div class="card-car-footer">
+            <div class="price-box">
+              <span class="price-val">${car.price}</span>
+              <span class="price-unit">${car.unit}</span>
             </div>
-            <button class="btn-book" onclick="bookCar('${c.name}')">Book Now</button>
+            <button class="btn-card-book" onclick="bookCar('${car.name}', '${car.pkg}')">
+              BOOK NOW
+            </button>
           </div>
         </div>
-      </div>`;
+      </article>
+    `;
   }).join("");
-  // Re-bind Framer Motion mouse effects
-  initFramerEffects();
-}
-renderFleet();
-
-// ═══════ FLEET FILTER ═══════
-fleetTabs.addEventListener("click", e => {
-  const tab = e.target.closest(".tab");
-  if (!tab) return;
-  fleetTabs.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
-  tab.classList.add("active");
-  renderFleet(tab.dataset.filter);
-});
-
-// ═══════ BOOK CAR (WhatsApp) ═══════
-function bookCar(carName) {
-  const msg = encodeURIComponent(`Hi Adarsh Tours, I'd like to book: ${carName}\nPackage: One Day (8 Hours / 80 Kms - Toll & Parking Included)\nPlease confirm availability.`);
-  window.open(`https://wa.me/918767629236?text=${msg}`, "_blank");
 }
 
-// ═══════ BOOK SERVICE (WhatsApp) ═══════
-function bookService(serviceName) {
-  const msg = encodeURIComponent(`Hi Adarsh Tours, I'd like to book / inquire about: ${serviceName}.\nPlease share pricing and availability.`);
-  window.open(`https://wa.me/918767629236?text=${msg}`, "_blank");
+// ─── TOGGLE WISHLIST ───
+function toggleWishlist(carId, btn) {
+  if (wishlist.has(carId)) {
+    wishlist.delete(carId);
+    btn.classList.remove("active");
+    btn.querySelector("i").className = "ph ph-heart";
+  } else {
+    wishlist.add(carId);
+    btn.classList.add("active");
+    btn.querySelector("i").className = "ph-fill ph-heart";
+  }
 }
 
-// ═══════ COUNTER ANIMATION ═══════
-function animateCounters() {
-  document.querySelectorAll(".metric-num").forEach(el => {
-    const target = parseInt(el.dataset.count);
-    const dur = 2000;
-    const start = performance.now();
-    function tick(now) {
-      const p = Math.min((now - start) / dur, 1);
-      const eased = 1 - Math.pow(1 - p, 3);
-      el.textContent = Math.floor(eased * target);
-      if (p < 1) requestAnimationFrame(tick);
-      else el.textContent = target;
+// ─── FLEET FILTER HANDLING ───
+if (fleetFilterTabs) {
+  fleetFilterTabs.addEventListener("click", e => {
+    const btn = e.target.closest(".v-filter-btn");
+    if (!btn) return;
+    fleetFilterTabs.querySelectorAll(".v-filter-btn").forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+    renderFleet(btn.dataset.filter);
+  });
+}
+
+if (viewAllCars) {
+  viewAllCars.addEventListener("click", () => {
+    if (fleetFilterTabs) {
+      fleetFilterTabs.querySelectorAll(".v-filter-btn").forEach(b => b.classList.remove("active"));
+      fleetFilterTabs.querySelector('[data-filter="all"]')?.classList.add("active");
     }
-    requestAnimationFrame(tick);
+    renderFleet("all");
   });
 }
-const metricObs = new IntersectionObserver(entries => {
-  entries.forEach(e => { if (e.isIntersecting) { animateCounters(); metricObs.disconnect(); } });
-}, { threshold: 0.3 });
-const metrics = document.querySelector(".hero-metrics");
-if (metrics) metricObs.observe(metrics);
 
-// ═══════ SCROLL REVEAL (FRAMER MOTION STAGGERED SPRING) ═══════
-function initReveal() {
-  document.querySelectorAll(".testi-card, .sec-head").forEach((el, i) => {
-    el.classList.add("reveal");
-    el.style.transitionDelay = `${(i % 4) * 0.09}s`;
-  });
-  const obs = new IntersectionObserver(entries => {
-    entries.forEach(e => { 
-      if (e.isIntersecting) { 
-        e.target.classList.add("visible"); 
-        obs.unobserve(e.target); 
-      } 
-    });
-  }, { threshold: 0.05, rootMargin: "150px 0px 150px 0px" });
-  document.querySelectorAll(".reveal").forEach(el => obs.observe(el));
-  
-  // Immediately show all elements if in full-page screenshot mode
-  if (window.innerHeight > 2500) {
-    document.querySelectorAll(".reveal").forEach(el => el.classList.add("visible"));
-  }
-  
-  // Re-bind Framer Motion mouse effects
-  initFramerEffects();
-}
+// ─── SEARCH WIDGET TAB SWITCHING ───
+if (searchTabs) {
+  searchTabs.addEventListener("click", e => {
+    const tab = e.target.closest(".search-tab");
+    if (!tab) return;
+    searchTabs.querySelectorAll(".search-tab").forEach(t => t.classList.remove("active"));
+    tab.classList.add("active");
+    currentTripType = tab.dataset.type;
 
-// ═══════ FRAMER MOTION 3D TILT EFFECT & MAGNETIC BUTTONS ═══════
-function initFramerEffects() {
-  // Magnetic Buttons Effect
-  document.querySelectorAll('.btn-cta:not(.btn-submit), .btn-ghost, .fab').forEach(btn => {
-    btn.addEventListener('mousemove', e => {
-      const rect = btn.getBoundingClientRect();
-      const x = e.clientX - rect.left - rect.width / 2;
-      const y = e.clientY - rect.top - rect.height / 2;
-      btn.style.transform = `translate3d(${x * 0.15}px, ${y * 0.15}px, 0) scale(1.03)`;
-    });
-    btn.addEventListener('mouseleave', () => {
-      btn.style.transform = '';
-    });
-  });
-
-  // 3D Card Tilt Effect (Removed .booking-card and .hero-poster-card to keep them stable and fixed)
-  document.querySelectorAll('.svc-card, .fleet-card, .why-card, .benefit-card, .testi-card').forEach(card => {
-    card.addEventListener('mousemove', e => {
-      const rect = card.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-      const centerX = rect.width / 2;
-      const centerY = rect.height / 2;
-      const rotateX = ((y - centerY) / centerY) * -4;
-      const rotateY = ((x - centerX) / centerX) * 4;
-      card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px)`;
-    });
-    card.addEventListener('mouseleave', () => {
-      card.style.transform = '';
-    });
+    // Update field cues based on selected tab
+    if (currentTripType === "Local") {
+      pickupLocationInput.placeholder = "Enter Mumbai pickup location";
+    } else if (currentTripType === "Outstation") {
+      pickupLocationInput.placeholder = "Enter pickup city & destination (e.g. Pune, Shirdi)";
+    } else if (currentTripType === "Airport") {
+      pickupLocationInput.placeholder = "Enter Airport Terminal (T1 / T2) or Address";
+    }
   });
 }
-initReveal();
 
-// ═══════ BOOKING FORM ═══════
-if (bookingForm) {
-  const dateInput = document.getElementById("pickupDate");
-  if (dateInput) {
-    const today = new Date().toISOString().split("T")[0];
-    dateInput.value = today;
-    dateInput.min = today;
-  }
-  bookingForm.addEventListener("submit", e => {
+// ─── SEARCH FORM SUBMISSION (DIRECT WHATSAPP QUOTE) ───
+if (searchForm) {
+  searchForm.addEventListener("submit", e => {
     e.preventDefault();
-    const trip = document.getElementById("tripType").value;
-    const pickup = document.getElementById("pickupLoc").value;
-    const drop = document.getElementById("dropLoc").value;
-    const date = document.getElementById("pickupDate").value;
-    const car = document.getElementById("carPref").value;
-    const msg = `Hi Adarsh Tours!\n\nTrip: ${trip}\nPickup: ${pickup || "Not specified"}\nDrop: ${drop || "Not specified"}\nDate: ${date}\nCar: ${car}\n\nPlease confirm availability and fare.`;
+    const loc = pickupLocationInput ? pickupLocationInput.value : "Mumbai";
+    const pDate = pickupDateInput ? pickupDateInput.value : "Today";
+    const pTime = document.getElementById("pickupTime")?.value || "10:00 AM";
+    const dDate = dropDateInput ? dropDateInput.value : "Same Day";
+    const dTime = document.getElementById("dropTime")?.value || "06:00 PM";
+
+    const msg = `Hi Adarsh Tours & Travels! 👋\n\nI want to book / search for a car:\n` +
+      `🚗 Trip Type: ${currentTripType}\n` +
+      `📍 Location: ${loc}\n` +
+      `📅 Pickup: ${pDate} at ${pTime}\n` +
+      `🏁 Return/Drop: ${dDate} at ${dTime}\n\n` +
+      `Please share available cars and best package rates!`;
+
     window.open(`https://wa.me/918767629236?text=${encodeURIComponent(msg)}`, "_blank");
   });
 }
 
-// ═══════ SMOOTH SCROLL ═══════
-document.querySelectorAll('a[href^="#"]').forEach(a => {
-  a.addEventListener("click", function (e) {
-    const t = document.querySelector(this.getAttribute("href"));
-    if (t) { e.preventDefault(); t.scrollIntoView({ behavior: "smooth", block: "start" }); }
+// ─── CAR BOOKING TRIGGER ───
+function bookCar(carName, pkg = "8h / 80km Package") {
+  const msg = `Hi Adarsh Tours & Travels! 👋\n\nI want to book: *${carName}*\nPackage: ${pkg}\n\nPlease confirm availability and driver pickup details.`;
+  window.open(`https://wa.me/918767629236?text=${encodeURIComponent(msg)}`, "_blank");
+}
+
+// ─── SERVICE BOOKING TRIGGER ───
+function bookServiceDirect(serviceName) {
+  const msg = `Hi Adarsh Tours & Travels! 👋\n\nI would like to inquire / book: *${serviceName}*.\nPlease share tariff details and availability.`;
+  window.open(`https://wa.me/918767629236?text=${encodeURIComponent(msg)}`, "_blank");
+}
+
+// ─── PROMO DISCOUNT CLAIM TRIGGER ───
+function claimDiscount() {
+  const msg = `Hi Adarsh Tours & Travels! 👋\n\nI'd like to claim the *20% OFF* promotional discount on my car booking.\nPlease share available offers!`;
+  window.open(`https://wa.me/918767629236?text=${encodeURIComponent(msg)}`, "_blank");
+}
+
+// ─── NEWSLETTER HANDLING ───
+function handleNewsletter(e) {
+  e.preventDefault();
+  const input = e.target.querySelector("input[type='email']");
+  if (input && input.value) {
+    alert("Thank you for subscribing to Adarsh Tours & Travels! You'll receive our best festive travel offers.");
+    input.value = "";
+  }
+}
+
+// ─── STICKY HEADER & ACTIVE NAV LINKS ───
+window.addEventListener("scroll", () => {
+  if (header) {
+    header.classList.toggle("scrolled", window.scrollY > 30);
+  }
+
+  // Active section spy
+  const sections = document.querySelectorAll("section[id], footer[id]");
+  const scrollY = window.scrollY + 120;
+
+  sections.forEach(sec => {
+    const id = sec.getAttribute("id");
+    const link = document.querySelector(`.nav-link[href="#${id}"]`);
+    if (link) {
+      const top = sec.offsetTop;
+      const height = sec.offsetHeight;
+      if (scrollY >= top && scrollY < top + height) {
+        document.querySelectorAll(".nav-link").forEach(l => l.classList.remove("active"));
+        link.classList.add("active");
+      }
+    }
   });
 });
 
-// ═══════ INTERACTIVE DRAGGABLE & SWIPEABLE ANNOUNCEMENT TICKER ═══════
+// ─── MOBILE MENU TOGGLE ───
+if (menuToggle && mainNav) {
+  menuToggle.addEventListener("click", () => {
+    mainNav.classList.toggle("open");
+    const icon = menuToggle.querySelector("i");
+    if (icon) {
+      icon.className = mainNav.classList.contains("open") ? "ph ph-x" : "ph ph-list";
+    }
+  });
+
+  mainNav.querySelectorAll(".nav-link").forEach(link => {
+    link.addEventListener("click", () => {
+      mainNav.classList.remove("open");
+      const icon = menuToggle.querySelector("i");
+      if (icon) icon.className = "ph ph-list";
+    });
+  });
+}
+
+// ─── INTERACTIVE DRAGGABLE & SWIPEABLE ANNOUNCEMENT TICKER ───
 function initAnnounceTicker() {
   const bar = document.querySelector(".announce-bar");
   const track = document.querySelector(".announce-ticker-track");
@@ -315,7 +380,7 @@ function initAnnounceTicker() {
     bar.classList.add("grabbing");
     try {
       bar.setPointerCapture(e.pointerId);
-    } catch (err) {}
+    } catch (err) { }
   });
 
   // Pointer Move (Mouse Drag or Finger Slide)
@@ -354,7 +419,7 @@ function initAnnounceTicker() {
     if (bar.hasPointerCapture && bar.hasPointerCapture(e.pointerId)) {
       try {
         bar.releasePointerCapture(e.pointerId);
-      } catch (err) {}
+      } catch (err) { }
     }
 
     // Clamp flick velocity
@@ -411,10 +476,9 @@ function initAnnounceTicker() {
   requestAnimationFrame(tick);
 }
 
-// Start ticker
-if (document.readyState === "loading") {
-  document.addEventListener("DOMContentLoaded", initAnnounceTicker);
-} else {
+// ─── INITIALIZATION ───
+document.addEventListener("DOMContentLoaded", () => {
+  initDates();
+  renderFleet();
   initAnnounceTicker();
-}
-
+});

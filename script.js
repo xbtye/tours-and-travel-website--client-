@@ -100,7 +100,6 @@ const pickupDateInput = document.getElementById("pickupDateInput");
 const dropDateInput = document.getElementById("dropDateInput");
 const viewAllCars = document.getElementById("viewAllCars");
 
-
 let currentTripType = "Local";
 
 // ─── INITIALIZE DATES ───
@@ -265,6 +264,12 @@ function bookServiceDirect(serviceName) {
 // ─── PROMO DISCOUNT CLAIM TRIGGER ───
 function claimDiscount() {
   const msg = `Hi Adarsh Tours & Travels! 👋\n\nI'd like to claim the *20% OFF* promotional discount on my car booking.\nPlease share available offers!`;
+  window.open(`https://wa.me/918767629236?text=${encodeURIComponent(msg)}`, "_blank");
+}
+
+// ─── ICONIC PLACE TOUR BOOKING TRIGGER ───
+function bookTourForPlace(placeName) {
+  const msg = `Hi Adarsh Tours & Travels! 👋\n\nI want to book a private sightseeing tour cab to visit:\n🏛️ *${placeName}* in Mumbai.\n\nPlease share your package options (8h/80km or custom), car models, and best fares!`;
   window.open(`https://wa.me/918767629236?text=${encodeURIComponent(msg)}`, "_blank");
 }
 
@@ -476,9 +481,45 @@ function initAnnounceTicker() {
   requestAnimationFrame(tick);
 }
 
+// ─── ICONIC PLACES FILTER TABS ───
+function initPlacesFilter() {
+  const tabsContainer = document.getElementById("placesFilterTabs");
+  const grid = document.getElementById("placesGrid");
+  if (!tabsContainer || !grid) return;
+
+  const cards = grid.querySelectorAll(".place-card");
+
+  tabsContainer.addEventListener("click", e => {
+    const btn = e.target.closest(".place-filter-btn");
+    if (!btn) return;
+
+    tabsContainer.querySelectorAll(".place-filter-btn").forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+
+    const filter = btn.dataset.placeFilter;
+
+    cards.forEach(card => {
+      const category = card.dataset.category;
+      if (filter === "all" || category === filter) {
+        card.style.display = "flex";
+        card.style.opacity = "0";
+        card.style.transform = "translateY(15px)";
+        setTimeout(() => {
+          card.style.transition = "opacity 0.35s ease, transform 0.35s ease";
+          card.style.opacity = "1";
+          card.style.transform = "translateY(0)";
+        }, 30);
+      } else {
+        card.style.display = "none";
+      }
+    });
+  });
+}
+
 // ─── INITIALIZATION ───
 document.addEventListener("DOMContentLoaded", () => {
   initDates();
   renderFleet();
   initAnnounceTicker();
+  initPlacesFilter();
 });

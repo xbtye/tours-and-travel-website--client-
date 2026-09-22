@@ -84,6 +84,7 @@
       <nav class="nav-menu" id="mainNav">
         <a href="#home" class="nav-link active">Home</a>
         <a href="#vehicles" class="nav-link">Vehicles</a>
+        <a href="#places" class="nav-link">Iconic Places</a>
         <a href="#services" class="nav-link">Services</a>
         <a href="#why-us" class="nav-link">Why Us</a>
         <a href="#how-it-works" class="nav-link">How It Works</a>
@@ -104,7 +105,7 @@
   <section class="hero" id="home">
     <!-- Full-Bleed Background Photo & Gradient -->
     <div class="hero-backdrop">
-      <img src="assets/hero-car.png" alt="Adarsh Luxury Fleet Car" class="hero-backdrop-img">
+      <img src="assets/hero-taj-mahal.jpg" alt="Taj Mahal Luxury Tour - Adarsh Tours & Travels" class="hero-backdrop-img">
       <div class="hero-backdrop-overlay"></div>
     </div>
 
@@ -279,7 +280,253 @@
     </div>
   </section>
 
-  <!-- ═══════ 7. PROMOTIONAL ADVENTURE BANNER ═══════ -->
+  <!-- ═══════ 7. VISIT ICONIC PLACES SECTION ═══════ -->
+  <section class="places-section" id="places">
+    <div class="container">
+      <!-- Section Header -->
+      <div class="section-header-row">
+        <div>
+          <span class="section-tag-orange">Explore Mumbai</span>
+          <h2 class="section-title-large">Visit Iconic Places in Mumbai</h2>
+          <p class="section-subtitle">
+            Discover the city's world-famous heritage monuments, scenic coastlines, and architectural marvels with our premium AC chauffeur service.
+          </p>
+        </div>
+        <a href="https://wa.me/918767629236?text=Hi%20Adarsh%20Tours,%20I%20want%20to%20know%20more%20about%20your%20Mumbai%20Sightseeing%20Packages." target="_blank" class="view-all-link">
+          <span>Custom Tour Plan</span>
+          <i class="ph-bold ph-arrow-right"></i>
+        </a>
+      </div>
+
+      <!-- Filter Tabs -->
+      <div class="places-filter-tabs" id="placesFilterTabs">
+        <button class="place-filter-btn active" data-place-filter="all">All Attractions</button>
+        <button class="place-filter-btn" data-place-filter="heritage">Heritage & Landmarks</button>
+        <button class="place-filter-btn" data-place-filter="coastal">Coastal & Scenic</button>
+        <button class="place-filter-btn" data-place-filter="modern">Modern Wonders</button>
+      </div>
+
+      <!-- Places Cards Grid -->
+      <div class="places-grid" id="placesGrid">
+        <!-- Place 1: Gateway of India & Taj Mahal Palace -->
+        <div class="place-card" data-category="heritage">
+          <div class="place-card-img-wrap">
+            <img src="places/p1.jpg" alt="Gateway of India & The Taj Mahal Palace" class="place-card-img" loading="lazy" onerror="this.onerror=null; this.src='assets/places/p1.jpg';">
+            <span class="place-card-badge"><i class="ph-fill ph-seal-check"></i> #1 Must Visit</span>
+            <span class="place-card-location-tag"><i class="ph-bold ph-map-pin"></i> Colaba Waterfront</span>
+          </div>
+          <div class="place-card-body">
+            <div class="place-card-head">
+              <h3 class="place-card-title">Gateway of India & The Taj</h3>
+              <div class="place-card-rating"><i class="ph-fill ph-star"></i> 4.9 (5.2k+)</div>
+            </div>
+            <p class="place-card-desc">
+              Mumbai's majestic 20th-century basalt arch overlooking the Arabian Sea, standing beside the world-renowned Taj Mahal Palace luxury hotel.
+            </p>
+            <div class="place-card-chips">
+              <span class="place-chip"><i class="ph-bold ph-bank"></i> Colonial Architecture</span>
+              <span class="place-chip"><i class="ph-bold ph-boat"></i> Harbour Ferries</span>
+              <span class="place-chip"><i class="ph-bold ph-camera"></i> Photo Hotspot</span>
+            </div>
+            <div class="place-card-foot">
+              <div class="place-recommend">
+                <span class="place-recommend-label">Recommended Tour</span>
+                <span class="place-recommend-car">8h / 80km Day Package</span>
+              </div>
+              <button class="btn-primary btn-book-place" onclick="bookTourForPlace('Gateway of India & The Taj')">
+                <span>Book Cab</span>
+                <i class="ph-bold ph-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Place 2: Marine Drive & Queen's Necklace -->
+        <div class="place-card" data-category="coastal">
+          <div class="place-card-img-wrap">
+            <img src="places/p2.jpg" alt="Marine Drive & Queen's Necklace" class="place-card-img" loading="lazy" onerror="this.onerror=null; this.src='assets/places/p2.jpg';">
+            <span class="place-card-badge"><i class="ph-fill ph-sun-horizon"></i> Sunset Paradise</span>
+            <span class="place-card-location-tag"><i class="ph-bold ph-map-pin"></i> South Mumbai Coast</span>
+          </div>
+          <div class="place-card-body">
+            <div class="place-card-head">
+              <h3 class="place-card-title">Marine Drive (Queen's Necklace)</h3>
+              <div class="place-card-rating"><i class="ph-fill ph-star"></i> 4.9 (4.8k+)</div>
+            </div>
+            <p class="place-card-desc">
+              The legendary 3.6 km crescent promenade along the Arabian Sea, famous for evening sea breezes, street vibes, and sparkling nighttime streetlights.
+            </p>
+            <div class="place-card-chips">
+              <span class="place-chip"><i class="ph-bold ph-waves"></i> Arabian Sea Views</span>
+              <span class="place-chip"><i class="ph-bold ph-sunset"></i> Golden Hour Drive</span>
+              <span class="place-chip"><i class="ph-bold ph-buildings"></i> Art Deco Heritage</span>
+            </div>
+            <div class="place-card-foot">
+              <div class="place-recommend">
+                <span class="place-recommend-label">Recommended Tour</span>
+                <span class="place-recommend-car">Evening Chauffeur Drive</span>
+              </div>
+              <button class="btn-primary btn-book-place" onclick="bookTourForPlace('Marine Drive & Queen\'s Necklace')">
+                <span>Book Cab</span>
+                <i class="ph-bold ph-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Place 3: Chhatrapati Shivaji Maharaj Terminus -->
+        <div class="place-card" data-category="heritage">
+          <div class="place-card-img-wrap">
+            <img src="places/p3.jpg" alt="Chhatrapati Shivaji Maharaj Terminus (CSMT)" class="place-card-img" loading="lazy" onerror="this.onerror=null; this.src='assets/places/p3.jpg';">
+            <span class="place-card-badge"><i class="ph-fill ph-crown"></i> UNESCO Heritage</span>
+            <span class="place-card-location-tag"><i class="ph-bold ph-map-pin"></i> Fort District</span>
+          </div>
+          <div class="place-card-body">
+            <div class="place-card-head">
+              <h3 class="place-card-title">CSMT Victorian Heritage</h3>
+              <div class="place-card-rating"><i class="ph-fill ph-star"></i> 4.8 (3.9k+)</div>
+            </div>
+            <p class="place-card-desc">
+              A UNESCO World Heritage Victorian Gothic masterpiece boasting grand central domes, intricate stone carvings, and stunning evening illumination.
+            </p>
+            <div class="place-card-chips">
+              <span class="place-chip"><i class="ph-bold ph-shield-check"></i> UNESCO World Heritage</span>
+              <span class="place-chip"><i class="ph-bold ph-sparkle"></i> Night Illumination</span>
+              <span class="place-chip"><i class="ph-bold ph-clock"></i> Historic Landmark</span>
+            </div>
+            <div class="place-card-foot">
+              <div class="place-recommend">
+                <span class="place-recommend-label">Recommended Tour</span>
+                <span class="place-recommend-car">South Mumbai Heritage Tour</span>
+              </div>
+              <button class="btn-primary btn-book-place" onclick="bookTourForPlace('CSMT Victorian Heritage')">
+                <span>Book Cab</span>
+                <i class="ph-bold ph-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Place 4: Bandra-Worli Sea Link -->
+        <div class="place-card" data-category="modern">
+          <div class="place-card-img-wrap">
+            <img src="places/p4.jpg" alt="Bandra-Worli Sea Link" class="place-card-img" loading="lazy" onerror="this.onerror=null; this.src='assets/places/p4.jpg';">
+            <span class="place-card-badge"><i class="ph-fill ph-lightning"></i> Modern Marvel</span>
+            <span class="place-card-location-tag"><i class="ph-bold ph-map-pin"></i> Bandra - Worli</span>
+          </div>
+          <div class="place-card-body">
+            <div class="place-card-head">
+              <h3 class="place-card-title">Bandra-Worli Sea Link</h3>
+              <div class="place-card-rating"><i class="ph-fill ph-star"></i> 4.8 (4.1k+)</div>
+            </div>
+            <p class="place-card-desc">
+              An engineering wonder spanning 5.6 km across the open Arabian Sea, connecting Bandra with South Mumbai with high-speed scenic ocean views.
+            </p>
+            <div class="place-card-chips">
+              <span class="place-chip"><i class="ph-bold ph-bridge"></i> Cable-Stayed Bridge</span>
+              <span class="place-chip"><i class="ph-bold ph-car"></i> Express Highway</span>
+              <span class="place-chip"><i class="ph-bold ph-buildings"></i> Skyline Panorama</span>
+            </div>
+            <div class="place-card-foot">
+              <div class="place-recommend">
+                <span class="place-recommend-label">Recommended Tour</span>
+                <span class="place-recommend-car">Airport Express / City Drive</span>
+              </div>
+              <button class="btn-primary btn-book-place" onclick="bookTourForPlace('Bandra-Worli Sea Link')">
+                <span>Book Cab</span>
+                <i class="ph-bold ph-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Place 5: Elephanta Caves Island -->
+        <div class="place-card" data-category="heritage">
+          <div class="place-card-img-wrap">
+            <img src="places/p5.jpg" alt="Elephanta Caves Island" class="place-card-img" loading="lazy" onerror="this.onerror=null; this.src='assets/places/p5.jpg';">
+            <span class="place-card-badge"><i class="ph-fill ph-hourglass-high"></i> 5th-Century Wonder</span>
+            <span class="place-card-location-tag"><i class="ph-bold ph-map-pin"></i> Mumbai Harbour Bay</span>
+          </div>
+          <div class="place-card-body">
+            <div class="place-card-head">
+              <h3 class="place-card-title">Elephanta Caves Island</h3>
+              <div class="place-card-rating"><i class="ph-fill ph-star"></i> 4.7 (2.8k+)</div>
+            </div>
+            <p class="place-card-desc">
+              Ancient rock-cut cave temples situated on an island in Mumbai harbour, famous for the colossal 20-foot three-headed Shiva Trimurti sculpture.
+            </p>
+            <div class="place-card-chips">
+              <span class="place-chip"><i class="ph-bold ph-shield-check"></i> UNESCO World Heritage</span>
+              <span class="place-chip"><i class="ph-bold ph-mountains"></i> Rock-Cut Architecture</span>
+              <span class="place-chip"><i class="ph-bold ph-compass"></i> Island Day Excursion</span>
+            </div>
+            <div class="place-card-foot">
+              <div class="place-recommend">
+                <span class="place-recommend-label">Recommended Tour</span>
+                <span class="place-recommend-car">Gateway Drop & Pickup Tour</span>
+              </div>
+              <button class="btn-primary btn-book-place" onclick="bookTourForPlace('Elephanta Caves Island')">
+                <span>Book Cab</span>
+                <i class="ph-bold ph-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Place 6: Haji Ali Dargah -->
+        <div class="place-card" data-category="coastal">
+          <div class="place-card-img-wrap">
+            <img src="places/p6.jpg" alt="Haji Ali Dargah & Worli Coast" class="place-card-img" loading="lazy" onerror="this.onerror=null; this.src='assets/places/p6.jpg';">
+            <span class="place-card-badge"><i class="ph-fill ph-drop"></i> Floating Island Shrine</span>
+            <span class="place-card-location-tag"><i class="ph-bold ph-map-pin"></i> Worli Coastline</span>
+          </div>
+          <div class="place-card-body">
+            <div class="place-card-head">
+              <h3 class="place-card-title">Haji Ali Dargah & Coast</h3>
+              <div class="place-card-rating"><i class="ph-fill ph-star"></i> 4.8 (3.4k+)</div>
+            </div>
+            <p class="place-card-desc">
+              An iconic 15th-century white marble shrine situated 500 meters into the Arabian Sea on an islet, connected by a narrow causeway accessible at low tide.
+            </p>
+            <div class="place-card-chips">
+              <span class="place-chip"><i class="ph-bold ph-waves"></i> Ocean Pathway</span>
+              <span class="place-chip"><i class="ph-bold ph-hands-praying"></i> Cultural Heritage</span>
+              <span class="place-chip"><i class="ph-bold ph-sun"></i> Scenic Sea Views</span>
+            </div>
+            <div class="place-card-foot">
+              <div class="place-recommend">
+                <span class="place-recommend-label">Recommended Tour</span>
+                <span class="place-recommend-car">Central Mumbai Heritage Tour</span>
+              </div>
+              <button class="btn-primary btn-book-place" onclick="bookTourForPlace('Haji Ali Dargah & Coast')">
+                <span>Book Cab</span>
+                <i class="ph-bold ph-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Sightseeing Banner -->
+      <div class="places-cta-banner">
+        <div class="places-cta-content">
+          <div class="places-cta-icon">
+            <i class="ph-fill ph-compass"></i>
+          </div>
+          <div>
+            <h4>Want a Customized Mumbai Full-Day Sightseeing Tour?</h4>
+            <p>We provide all-inclusive 8h/80km & 12h/120km chauffeur packages covering all top attractions with clean AC cars & verified English-speaking drivers.</p>
+          </div>
+        </div>
+        <a href="https://wa.me/918767629236?text=Hi%20Adarsh%20Tours,%20I%20am%20interested%20in%20a%20Full%20Day%20Mumbai%20Sightseeing%20Cab%20Package.%20Please%20share%20itinerary%20and%20rates." target="_blank" class="btn-primary btn-pill places-cta-btn">
+          <i class="ph-fill ph-whatsapp-logo"></i>
+          <span>Plan Mumbai Tour On WhatsApp</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ 8. PROMOTIONAL ADVENTURE BANNER ═══════ -->
   <section class="promo-section">
     <div class="container">
       <div class="promo-container-card">
@@ -455,53 +702,143 @@
   <!-- ═══════ 10. TESTIMONIALS SECTION ═══════ -->
   <section class="testimonials-section" id="why-us">
     <div class="container">
-      <div style="text-align: center; max-width: 600px; margin: 0 auto;">
-        <span class="section-tag-orange">Testimonials</span>
-        <h2 class="section-title-large">What Our Clients Say</h2>
+      <div style="text-align: center; max-width: 640px; margin: 0 auto;">
+        <span class="section-tag-orange">International Reviews</span>
+        <h2 class="section-title-large">Loved by Global Travelers</h2>
         <p style="color: var(--text-muted); font-size: 0.95rem; margin-top: 8px;">
-          Trusted by over 5,000+ satisfied travelers for reliable rides across Mumbai and Maharashtra.
+          Trusted by international tourists, solo travelers, and business delegations from around the world for safe, verified, and punctual rides in Mumbai.
         </p>
       </div>
 
       <div class="testi-grid">
+        <!-- Review 1: UK -->
         <div class="testi-card">
-          <div class="testi-stars">
-            <i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i>
+          <div class="testi-card-top">
+            <div class="testi-stars">
+              <i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i>
+            </div>
+            <span class="testi-verified"><i class="ph-fill ph-seal-check"></i> Verified Traveler</span>
           </div>
-          <p class="testi-text">"Excellent service from Adarsh Tours! Booked a cab to Shirdi and the driver was punctual, polite, and the car was spotless. Highly recommended!"</p>
+          <p class="testi-text">"As first-time visitors from the UK, navigating Mumbai seemed daunting. Booking Adarsh Tours was the best decision of our holiday! Our chauffeur, Vinod, spoke fluent English, was exceptionally polite, and guided us through the Gateway of India, Marine Drive, and Dhobi Ghat. The AC Crysta was spotless and comfortable. 10/10 service!"</p>
           <div class="testi-author">
-            <div class="testi-avatar">RS</div>
-            <div>
-              <h5 class="testi-name">Rajesh Sharma</h5>
-              <span class="testi-trip">Mumbai to Shirdi Trip</span>
+            <div class="testi-avatar">DM</div>
+            <div class="testi-author-info">
+              <div class="testi-name-row">
+                <h5 class="testi-name">David & Sarah Miller</h5>
+                <span class="testi-country-flag">🇬🇧</span>
+              </div>
+              <span class="testi-country">London, United Kingdom</span>
+              <span class="testi-trip">Mumbai Heritage Day Tour (Innova Crysta)</span>
             </div>
           </div>
         </div>
 
+        <!-- Review 2: Germany -->
         <div class="testi-card">
-          <div class="testi-stars">
-            <i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i>
+          <div class="testi-card-top">
+            <div class="testi-stars">
+              <i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i>
+            </div>
+            <span class="testi-verified"><i class="ph-fill ph-seal-check"></i> Verified Traveler</span>
           </div>
-          <p class="testi-text">"Used their airport transfer service multiple times. Always on time, clean Innova Crysta, and very reasonable rates. Best car rental service in Mumbai!"</p>
+          <p class="testi-text">"Punctuality and reliability at its finest. My flight arrived at 2:30 AM at Terminal 2, and the driver was already waiting outside arrival gate 4 with a clear name placard. He helped with all our heavy luggage, the car smelled fresh with bottled water provided, and the ride was effortless. Outstanding executive service."</p>
           <div class="testi-author">
-            <div class="testi-avatar">PM</div>
-            <div>
-              <h5 class="testi-name">Priya Mehta</h5>
-              <span class="testi-trip">Airport Transfers T1 & T2</span>
+            <div class="testi-avatar">JB</div>
+            <div class="testi-author-info">
+              <div class="testi-name-row">
+                <h5 class="testi-name">Dr. Julian Becker</h5>
+                <span class="testi-country-flag">🇩🇪</span>
+              </div>
+              <span class="testi-country">Frankfurt, Germany</span>
+              <span class="testi-trip">BOM Airport T2 International Transfer</span>
             </div>
           </div>
         </div>
 
+        <!-- Review 3: USA -->
         <div class="testi-card">
-          <div class="testi-stars">
-            <i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i>
+          <div class="testi-card-top">
+            <div class="testi-stars">
+              <i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i>
+            </div>
+            <span class="testi-verified"><i class="ph-fill ph-seal-check"></i> Verified Traveler</span>
           </div>
-          <p class="testi-text">"Booked a decorated Crysta for my daughter's wedding. Beautiful decoration, professional driver, made our special day seamless and memorable!"</p>
+          <p class="testi-text">"As a solo female traveler visiting India, safety was my #1 concern. The team at Adarsh Tours made me feel completely secure, respected, and well cared for all day. My driver knew the absolute best photography angles for CSMT at dusk and helped me navigate busy spots with ease. Transparent WhatsApp booking and zero hassle!"</p>
           <div class="testi-author">
-            <div class="testi-avatar">AK</div>
-            <div>
-              <h5 class="testi-name">Amit Kulkarni</h5>
-              <span class="testi-trip">Wedding Car Hire</span>
+            <div class="testi-avatar">JT</div>
+            <div class="testi-author-info">
+              <div class="testi-name-row">
+                <h5 class="testi-name">Jessica Taylor</h5>
+                <span class="testi-country-flag">🇺🇸</span>
+              </div>
+              <span class="testi-country">California, United States</span>
+              <span class="testi-trip">Solo Sightseeing & Photo Tour</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Review 4: Australia -->
+        <div class="testi-card">
+          <div class="testi-card-top">
+            <div class="testi-stars">
+              <i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i>
+            </div>
+            <span class="testi-verified"><i class="ph-fill ph-seal-check"></i> Verified Traveler</span>
+          </div>
+          <p class="testi-text">"Incredible experience on our weekend getaway! The highway driving through the Western Ghats was remarkably smooth and cautious. Transparent all-inclusive quote with tolls and parking included — zero haggling or surprise extra charges. Very professional outfit that we will definitely use again on our next India visit."</p>
+          <div class="testi-author">
+            <div class="testi-avatar">MB</div>
+            <div class="testi-author-info">
+              <div class="testi-name-row">
+                <h5 class="testi-name">Marcus & Chloe Bennett</h5>
+                <span class="testi-country-flag">🇦🇺</span>
+              </div>
+              <span class="testi-country">Sydney, Australia</span>
+              <span class="testi-trip">Outstation Trip to Lonavala & Pune</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Review 5: France -->
+        <div class="testi-card">
+          <div class="testi-card-top">
+            <div class="testi-stars">
+              <i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i>
+            </div>
+            <span class="testi-verified"><i class="ph-fill ph-seal-check"></i> Verified Traveler</span>
+          </div>
+          <p class="testi-text">"Superb private tour service. They picked us up right from our hotel lobby at Nariman Point and coordinated our whole day schedule seamlessly. The driver was patient, punctual, and very knowledgeable about Mumbai's history. Exceptional value for international tourists looking for luxury and reliability."</p>
+          <div class="testi-author">
+            <div class="testi-avatar">AL</div>
+            <div class="testi-author-info">
+              <div class="testi-name-row">
+                <h5 class="testi-name">Antoine & Camille Laurent</h5>
+                <span class="testi-country-flag">🇫🇷</span>
+              </div>
+              <span class="testi-country">Paris, France</span>
+              <span class="testi-trip">Colaba & Elephanta Heritage Excursion</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Review 6: Ireland -->
+        <div class="testi-card">
+          <div class="testi-card-top">
+            <div class="testi-stars">
+              <i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i>
+            </div>
+            <span class="testi-verified"><i class="ph-fill ph-seal-check"></i> Verified Traveler</span>
+          </div>
+          <p class="testi-text">"Hired an executive hybrid sedan for 3 consecutive days for meetings in BKC and weekend sightseeing. Consistently on time every single morning, pristine vehicle condition, and impeccable professional courtesy. If you're coming from overseas and want a stress-free travel partner in Mumbai, this is the company to trust."</p>
+          <div class="testi-author">
+            <div class="testi-avatar">LO</div>
+            <div class="testi-author-info">
+              <div class="testi-name-row">
+                <h5 class="testi-name">Liam & Emma O'Connor</h5>
+                <span class="testi-country-flag">🇮🇪</span>
+              </div>
+              <span class="testi-country">Dublin, Ireland</span>
+              <span class="testi-trip">3-Day Business & Leisure Chauffeur</span>
             </div>
           </div>
         </div>

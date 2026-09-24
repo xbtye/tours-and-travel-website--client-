@@ -269,7 +269,7 @@ function claimDiscount() {
 
 // ─── ICONIC PLACE TOUR BOOKING TRIGGER ───
 function bookTourForPlace(placeName) {
-  const msg = `Hi Adarsh Tours & Travels! 👋\n\nI want to book a private sightseeing tour cab to visit:\n🏛️ *${placeName}* in Mumbai.\n\nPlease share your package options (8h/80km or custom), car models, and best fares!`;
+  const msg = `Hi Adarsh Tours & Travels! 👋\n\nI want to book the *1-Day Mumbai Sight Seeing By Air Cool Car Package* (24 Hours Service).\n\nSelected Spot / Landmark:\n📍 *${placeName}*\n\nPlease share available AC car options and best rates!`;
   window.open(`https://wa.me/918767629236?text=${encodeURIComponent(msg)}`, "_blank");
 }
 

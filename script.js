@@ -516,6 +516,42 @@ function initPlacesFilter() {
   });
 }
 
+// ─── POLICY & LEGAL MODAL SYSTEM ───
+function openPolicyModal(modalId) {
+  const modal = document.getElementById(modalId);
+  if (!modal) return;
+  modal.classList.add("active");
+  document.body.style.overflow = "hidden";
+}
+
+function closePolicyModal(modalId) {
+  const modal = document.getElementById(modalId);
+  if (!modal) return;
+  modal.classList.remove("active");
+  document.body.style.overflow = "";
+}
+
+function closeAllPolicyModals() {
+  document.querySelectorAll(".policy-modal-overlay").forEach(modal => {
+    modal.classList.remove("active");
+  });
+  document.body.style.overflow = "";
+}
+
+// Close modal when clicking dark backdrop overlay
+document.addEventListener("click", e => {
+  if (e.target.classList.contains("policy-modal-overlay")) {
+    closeAllPolicyModals();
+  }
+});
+
+// Close modal when pressing ESC key
+document.addEventListener("keydown", e => {
+  if (e.key === "Escape") {
+    closeAllPolicyModals();
+  }
+});
+
 // ─── INITIALIZATION ───
 document.addEventListener("DOMContentLoaded", () => {
   initDates();

@@ -236,13 +236,13 @@
         </div>
 
         <!-- Prop 2 -->
-        <div class="value-prop-card">
+        <div class="value-prop-card" style="cursor: pointer;" onclick="openPolicyModal('cancellationModal')" title="Click to read Cancellation Policy">
           <div class="value-prop-icon">
             <i class="ph-fill ph-calendar-check"></i>
           </div>
           <div class="value-prop-text">
             <h4>Free Cancellation</h4>
-            <p>Cancel or modify your booking for free anytime with zero hassle.</p>
+            <p>Cancel or modify your booking for free anytime with zero hassle. <span style="color: var(--primary); font-weight: 700; text-decoration: underline;">View Policy &rarr;</span></p>
           </div>
         </div>
 
@@ -948,15 +948,15 @@
           </ul>
         </div>
 
-        <!-- Col 3: Information -->
+        <!-- Col 3: Information & Policies -->
         <div class="footer-col">
-          <h5>Information</h5>
+          <h5>Policies & Legal</h5>
           <ul>
+            <li><a href="javascript:void(0)" onclick="openPolicyModal('termsModal')"><i class="ph-bold ph-file-text" style="color: var(--primary);"></i> Terms & Conditions</a></li>
+            <li><a href="javascript:void(0)" onclick="openPolicyModal('cancellationModal')"><i class="ph-bold ph-arrow-counter-clockwise" style="color: var(--primary);"></i> Cancellation Policy</a></li>
+            <li><a href="javascript:void(0)" onclick="openPolicyModal('privacyModal')"><i class="ph-bold ph-shield-check" style="color: var(--primary);"></i> Privacy Policy</a></li>
             <li><a href="#how-it-works">Booking Guide</a></li>
             <li><a href="#searchWidget">8h / 80km Package</a></li>
-            <li><a href="#searchWidget">Outstation Tariff</a></li>
-            <li><a href="#contact">Payment Modes</a></li>
-            <li><a href="#contact">24/7 Helpline</a></li>
           </ul>
         </div>
 
@@ -1000,19 +1000,177 @@
       <!-- Bottom Bar -->
       <div class="footer-bottom-bar">
         <span>&copy; 2026 Adarsh Tours & Travels. All rights reserved.</span>
-        <span>We drive your journey.</span>
+        <div class="footer-bottom-links">
+          <a href="javascript:void(0)" onclick="openPolicyModal('termsModal')">Terms & Conditions</a>
+          <span class="dot">•</span>
+          <a href="javascript:void(0)" onclick="openPolicyModal('cancellationModal')">Cancellation & Refund Policy</a>
+          <span class="dot">•</span>
+          <a href="javascript:void(0)" onclick="openPolicyModal('privacyModal')">Privacy Policy</a>
+        </div>
       </div>
     </div>
   </footer>
 
-  <!-- ═══════ 13. FLOATING ACTIONS (WHATSAPP & PHONE) ═══════ -->
-  <div class="floating-actions">
-    <a href="https://wa.me/918767629236" class="fab-btn fab-whatsapp" target="_blank" aria-label="Book on WhatsApp">
-      <i class="ph-fill ph-whatsapp-logo"></i>
-    </a>
-    <a href="tel:+919987618778" class="fab-btn fab-phone" aria-label="Call Adarsh Travels">
-      <i class="ph-fill ph-phone"></i>
-    </a>
+  <!-- ═══════ 14. POLICY & LEGAL MODALS ═══════ -->
+  <!-- 1. TERMS & CONDITIONS MODAL -->
+  <div class="policy-modal-overlay" id="termsModal" role="dialog" aria-labelledby="termsTitle" aria-modal="true">
+    <div class="policy-modal-card">
+      <div class="policy-modal-header">
+        <div class="policy-modal-title-group">
+          <div class="policy-modal-icon">
+            <i class="ph-fill ph-file-text"></i>
+          </div>
+          <div>
+            <h3 id="termsTitle">Terms & Conditions</h3>
+            <p>Adarsh Tours & Travels — Transparent Rental Agreement</p>
+          </div>
+        </div>
+        <button class="policy-modal-close" onclick="closePolicyModal('termsModal')" aria-label="Close modal">
+          <i class="ph-bold ph-x"></i>
+        </button>
+      </div>
+      <div class="policy-modal-body">
+        <div class="policy-section-box">
+          <h4><i class="ph-fill ph-car"></i> 1. Rental Package & Usage Rules</h4>
+          <p>Local rentals operate on a standard <strong>8 Hours / 80 Km</strong> package. Additional time or distance beyond the package limit is billed at standard per-hour and per-kilometer transparent rates. Outstation trips require a minimum driver allowance of 250 km/day.</p>
+        </div>
+
+        <div class="policy-section-box">
+          <h4><i class="ph-fill ph-receipt"></i> 2. Toll, Parking & Driver Allowance</h4>
+          <p>Toll charges, parking fees, and state entry taxes are included in our specified all-inclusive sightseeing packages. For custom outstation trips, toll and parking charges are billed at actual government toll booth tariffs with official receipts provided.</p>
+        </div>
+
+        <div class="policy-section-box">
+          <h4><i class="ph-fill ph-clock-afternoon"></i> 3. Night Allowance & Driver Timings</h4>
+          <p>For outstation or extended local rides spanning between <strong>10:00 PM and 6:00 AM</strong>, a standard night allowance of ₹300 is applicable for driver safety and overnight rest accommodations.</p>
+        </div>
+
+        <div class="policy-section-box">
+          <h4><i class="ph-fill ph-shield-check"></i> 4. Passenger Safety & Vehicle Sanitization</h4>
+          <p>All vehicles in our fleet are fully insured, commercially licensed (T-Permit), regularly serviced, and cleaned before every pickup. Smoking, consumption of alcohol, or illegal substances inside the vehicle is strictly prohibited to maintain hygiene for all guests.</p>
+        </div>
+
+        <div class="policy-badge-grid">
+          <div class="policy-badge-item">
+            <i class="ph-fill ph-seal-check"></i> 100% Commercial T-Permit
+          </div>
+          <div class="policy-badge-item">
+            <i class="ph-fill ph-user-check"></i> Verified Private Chauffeurs
+          </div>
+        </div>
+      </div>
+      <div class="policy-modal-footer">
+        <span>Need clarification? Call 24/7 Helpline: +91 9987618778</span>
+        <button class="btn-policy-close" onclick="closePolicyModal('termsModal')">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. CANCELLATION & REFUND POLICY MODAL -->
+  <div class="policy-modal-overlay" id="cancellationModal" role="dialog" aria-labelledby="cancelTitle" aria-modal="true">
+    <div class="policy-modal-card">
+      <div class="policy-modal-header">
+        <div class="policy-modal-title-group">
+          <div class="policy-modal-icon" style="background: rgba(34, 197, 94, 0.15); border-color: rgba(34, 197, 94, 0.3); color: #16A34A;">
+            <i class="ph-fill ph-arrow-counter-clockwise"></i>
+          </div>
+          <div>
+            <h3 id="cancelTitle">Cancellation & Refund Policy</h3>
+            <p>100% Flexible, Stress-Free Cancellation Guarantee</p>
+          </div>
+        </div>
+        <button class="policy-modal-close" onclick="closePolicyModal('cancellationModal')" aria-label="Close modal">
+          <i class="ph-bold ph-x"></i>
+        </button>
+      </div>
+      <div class="policy-modal-body">
+        <div class="policy-section-box" style="border-left: 4px solid #16A34A;">
+          <h4><i class="ph-fill ph-check-circle" style="color: #16A34A;"></i> 1. Free Cancellation Windows</h4>
+          <p>We understand plans change! You can cancel or reschedule your ride with zero penalty under the following terms:</p>
+          <ul style="margin-top: 8px; margin-left: 18px; color: var(--text-muted); font-size: 0.86rem; line-height: 1.6;">
+            <li><strong>Local Cabs & Airport Transfers:</strong> Free cancellation up to <strong>2 hours</strong> before scheduled pickup time.</li>
+            <li><strong>Outstation & Multi-day Package Tours:</strong> Free cancellation up to <strong>6 hours</strong> before scheduled pickup time.</li>
+          </ul>
+        </div>
+
+        <div class="policy-section-box">
+          <h4><i class="ph-fill ph-currency-inr"></i> 2. Instant 100% Refund Processing</h4>
+          <p>Any advance deposit paid for bookings cancelled within the free cancellation window will be refunded <strong>100% in full</strong> via UPI, Google Pay, PhonePe, or Direct Bank Transfer within 24 hours.</p>
+        </div>
+
+        <div class="policy-section-box">
+          <h4><i class="ph-fill ph-warning-circle"></i> 3. Late Cancellation & Driver Mobilization</h4>
+          <p>If a booking is cancelled after the driver has already dispatched or arrived at your pickup location (less than 1 hour before pickup), a nominal fee of ₹300 is deducted to compensate the driver for fuel and time mobilization.</p>
+        </div>
+
+        <div class="policy-section-box">
+          <h4><i class="ph-fill ph-arrows-clockwise"></i> 4. Vehicle Breakdown Guarantee</h4>
+          <p>In the rare event of a vehicle breakdown during your trip, Adarsh Tours guarantees an immediate replacement vehicle of equal or upgraded segment within 45 minutes, or a full pro-rata trip refund.</p>
+        </div>
+
+        <div class="policy-badge-grid">
+          <div class="policy-badge-item">
+            <i class="ph-fill ph-shield-check"></i> Zero Hidden Fees
+          </div>
+          <div class="policy-badge-item">
+            <i class="ph-fill ph-lightning"></i> 24-Hour Instant Refund
+          </div>
+        </div>
+      </div>
+      <div class="policy-modal-footer">
+        <span>To cancel or reschedule, WhatsApp us: +91 8767629236</span>
+        <button class="btn-policy-close" onclick="closePolicyModal('cancellationModal')">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. PRIVACY POLICY MODAL -->
+  <div class="policy-modal-overlay" id="privacyModal" role="dialog" aria-labelledby="privacyTitle" aria-modal="true">
+    <div class="policy-modal-card">
+      <div class="policy-modal-header">
+        <div class="policy-modal-title-group">
+          <div class="policy-modal-icon" style="background: rgba(59, 130, 246, 0.15); border-color: rgba(59, 130, 246, 0.3); color: #2563EB;">
+            <i class="ph-fill ph-shield-check"></i>
+          </div>
+          <div>
+            <h3 id="privacyTitle">Privacy Policy</h3>
+            <p>Your Data Privacy & Personal Security Statement</p>
+          </div>
+        </div>
+        <button class="policy-modal-close" onclick="closePolicyModal('privacyModal')" aria-label="Close modal">
+          <i class="ph-bold ph-x"></i>
+        </button>
+      </div>
+      <div class="policy-modal-body">
+        <div class="policy-section-box">
+          <h4><i class="ph-fill ph-lock-key"></i> 1. Information Collection & Usage</h4>
+          <p>Adarsh Tours & Travels only collects essential trip details such as your name, mobile number, pickup address, and flight number for airport drop/pickup. This data is strictly used to dispatch your driver and provide instant trip updates.</p>
+        </div>
+
+        <div class="policy-section-box">
+          <h4><i class="ph-fill ph-prohibit"></i> 2. Zero Spam & Third-Party Sharing</h4>
+          <p>We respect your privacy. We <strong>NEVER share, sell, or rent</strong> your personal contact details to third-party telemarketers or external advertisers. You will never receive unsolicited spam calls or promotional messages.</p>
+        </div>
+
+        <div class="policy-section-box">
+          <h4><i class="ph-fill ph-chats-circle"></i> 3. Secure Direct WhatsApp Communications</h4>
+          <p>All trip bookings, tariff confirmations, and driver contact details are exchanged directly via our encrypted official WhatsApp business line (+91 8767629236), keeping your information private and secure.</p>
+        </div>
+
+        <div class="policy-badge-grid">
+          <div class="policy-badge-item" style="background: #EFF6FF; border-color: #BFDBFE; color: #1D4ED8;">
+            <i class="ph-fill ph-lock-key"></i> 100% Data Protection
+          </div>
+          <div class="policy-badge-item" style="background: #EFF6FF; border-color: #BFDBFE; color: #1D4ED8;">
+            <i class="ph-fill ph-check"></i> Zero Marketing Spam
+          </div>
+        </div>
+      </div>
+      <div class="policy-modal-footer">
+        <span>Questions about privacy? Email: vinoddubey965@gmail.com</span>
+        <button class="btn-policy-close" onclick="closePolicyModal('privacyModal')">Close</button>
+      </div>
+    </div>
   </div>
 
   <!-- JavaScript -->
